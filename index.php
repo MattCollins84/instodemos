@@ -1,85 +1,53 @@
 <?
+  $homeActive = true;
   require_once('includes/header.php');
 ?>
 
-  <header class='jumbotron'>
-    <div class='container'>
-      <div class='row'>
-        
-        <div class='span6'>
-          <h1>Insto</h1>
-          <p>Real-time, real easy...</p>
-        </div>
-        
-        <div class='span5'>
-          
-          <div id='header-buttons'>
-            
-            <div>
-              <a class='ml pull-right btn btn-large btn-primary' href='/chat'>Real-time chat &raquo;</a>
-              <p>A real-time chat system, implemented with just a few lines of Javascript...</p>
-            </div>
-            
-            <div>
-              <a class='ml pull-right btn btn-large btn-primary' href='/games'>Games &raquo;</a>
-              <p>A simple drawing game...</p>
-            </div>
-            
-            <div>
-              <a class='ml pull-right btn btn-large btn-primary' href='/collaborative'>Real-time chat &raquo;</a>
-              <p>Collaborative applications for business...</p>
-            </div>
-            
-            
+    <!-- Masthead -->
+    <div class="full callout">
+      <div class="container">
+        <div class="row">
+          <div class="span12 companycallout">
+          <img class='calloutlogo' src="/img/full_logo.png" alt="insto" />
+          <h1>REAL-TIME. <span>REAL EASY.</span></h1>
+          <p><a class="btn btn-success btn-large" href="/signup">Sign-up free &raquo;</a></p>
           </div>
-          
-          
         </div>
-        
       </div>
     </div>
-  </header>
-  
-  <div class='container' id='main'>
-  
-    <div class='row'>
     
-      <div class='span4'>
-        <h3>Targeted Messages</h3>
-        <p>Send real-time messages to specific users of your application.</p>
+    <!-- features -->
+    <div class="row-fluid section section-last" id="features">
+      <div class="container"> 
+
+        <div class="explain">
+          <p class="intro">Create amazing real-time applications. Simply.</p>
+          <div class="row-fluid"> 
+            <div class="span4">
+              <h3>Endless possibilities</h3>
+              <p>Insto is designed to bring the real-time web to your application, in the simplest way possible.</p>
+              <p>Create real-time charts and statistics, activity streams, live data suites, synchronised UI experience, even online games!</p>
+              <p>The limit really is your imagination...</p>
+            </div>
+
+            <div class="span4">
+              <h3>Accessible</h3>
+              <p>Our Javascript library gets you up and running quickly and simply in the browser, whilst the simple REST API helps with integration into your existing systems.</p>
+              <p>Sign-up to our free beta now!</p>
+              <p><a href='/signup' class='btn btn-mini btn-success'>Sign-up &raquo;</a></p>
+            </div>
+
+            <div class="span4">
+              <h3>Easy Implementation</h3>
+              <p>Enable Insto in your application with just one line of Javascript.</p>
+              <p>Our cloud based service means no infrastructure headaches for you, leaving you to focus on delivering an engaging experience for your users.</p>
+            </div>
+
+          </div> 
+              
+        </div>
       </div>
-      
-      <div class='span4'>
-        <h3>Broadcast Messages</h3>
-        <p>Send real-time messages to all users of your application.</p>
-      </div>
-      
-      <div class='span4'>
-        <h3>Notifications</h3>
-        <p>Get notifications when users connect or disconnect.</p>
-      </div>
-    
     </div>
-    
-    <div class='row'>
-    
-      <div class='span4'>
-        <h3>Query Users</h3>
-        <p>Find out which users are connected at any time.</p>
-      </div>
-      
-      <div class='span4'>
-        <h3>Schema-less</h3>
-        <p>Schema-less data structure means that Insto will adapt to your applications data structure.</p>
-      </div>
-      
-      <div class='span4'>
-        
-      </div>
-    
-    </div>
-  
-  </div>
   
 <?
   require_once('includes/footer.php');  

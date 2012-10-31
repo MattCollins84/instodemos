@@ -1,3 +1,7 @@
 RewriteEngine on
 
+RewriteRule ^demos$ /demos.php [L]
 RewriteRule ^chat$ /chat.php [L]
+RewriteRule ^draw$ /draw.php [L]
+RewriteRule ^ui$ /ui.php [L]
+RewriteRule ^signup$ /signup.php [L]
