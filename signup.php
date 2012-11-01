@@ -62,8 +62,13 @@
                   </div>
                 </div>
                 
+                <div id='fail' class='alert alert-error hidden'>
+                
+                </div>
+                
                 <div class="form-actions">
                   <button type="button" onclick='signup();' class="btn btn-primary">Sign-up!</button>
+                  <input type='hidden' name='instohost' id='instohost' value='<?=$config['insto_host'];?>' />
                 </div>
               </form>
             

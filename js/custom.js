@@ -5,6 +5,7 @@ var signup = function() {
    * VALIDATION
    */
   var error = false;
+  $('#fail').addClass('hidden');
   $('.control-group').removeClass('error'); 
   $('help-inline').addClass('hidden');
    
@@ -36,9 +37,22 @@ var signup = function() {
     $.ajax({
       url: "/signup_ajax.php",
       type: 'POST',
-      data: $('#signup-form').serialize()
+      data: $('#signup-form').serialize(),
+      dataType: "json"
     }).done(function(data) { 
-      console.log(data);
+      var obj = $.parseJSON(data);
+      
+      // success
+      if (obj.success) {
+        window.location.href = "/welcome";
+      }
+      
+      // no success
+      else {
+        var err = obj.msg.join("<br/>");
+        $('#fail').html(err).removeClass('hidden');
+      }
+      
     });
   }
   
