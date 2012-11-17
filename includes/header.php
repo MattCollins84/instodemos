@@ -1,7 +1,5 @@
 <?
-  $config = array();
-  $config['api_key'] = ($_SERVER['HTTP_HOST']=="insto.mattcollins.com"?"key":"strikes");
-  $config['insto_host'] = ($_SERVER['HTTP_HOST']=="insto.mattcollins.com"?"http://localhost:3000":"http://ec2-176-34-91-164.eu-west-1.compute.amazonaws.com:3000");
+require_once('includes/config.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -9,7 +7,8 @@
     <meta charset="utf-8">
     <title>&raquo; Insto - Real-time, Real-easy</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
+    <meta name="description" content="Insto allows you to add real time web technology to your website. Get real time statistics, add real time communication between you and your users and experience the true push of information. With our Realtime Framework, develop your own real time applications.">
+    <meta name="keywords" content="realtime, real time, real-time, real time web, realtime web, websockets, web socket, cloud, cloud based, real time statistics, real time framework, framework, web development, developers">
     <meta name="author" content="">
 
     <!-- Le styles -->
@@ -43,6 +42,19 @@
     
     <script type="text/javascript" src="<?=$config['insto_host'];?>/socket.io/socket.io.js"></script>
     <script type="text/javascript" src="<?=$config['insto_host'];?>/lib/client.js"></script>
+    
+    <!--Load the AJAX API-->
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+
+      // Load the Visualization API and the piechart package.
+      google.load('visualization', '1.0', {'packages':['corechart']});
+
+      var test = function() {
+        alert('done');
+      }
+    </script>
+    
 
   </head>
 
@@ -66,9 +78,17 @@
             <div class="nav-collapse">
                 <ul class="nav pull-right">
                   <li <?=($homeActive?'class="active"':'');?>><a href="/" class="anchorLink">Home</a></li>
-                  <li <?=($signupActive?'class="active"':'');?>><a href="/signup" class="anchorLink">Sign-up</a></li>
+                  <? if (!isset($_SESSION['user']) || !$_SESSION['user']) { ?>
+                    <li <?=($signupActive?'class="active"':'');?>><a href="/signup" class="anchorLink">Sign-up</a></li>
+                  <? } ?>
                   <li <?=($docsActive?'class="active"':'');?>><a href="/docs" class="anchorLink">Docs</a></li>
                   <li <?=($demosActive?'class="active"':'');?>><a href="/demos" class="anchorLink">Demos</a></li>
+                  <? if (!isset($_SESSION['user']) || !$_SESSION['user']) { ?>
+                    <li <?=($signinActive?'class="active"':'');?>><a href="/signin" class="anchorLink">Sign-in</a></li>
+                  <? } else { ?>
+                    <li <?=($dashboardActive?'class="active"':'');?>><a href="/dashboard" class="anchorLink">Dashboard</a></li>
+                    <li <?=($homeActive?'class="active"':'');?>><a href="/logout" class="anchorLink">Logout</a></li>
+                  <? } ?>
                 </ul>
             </div>
           </div>

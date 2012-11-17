@@ -58,8 +58,73 @@ var signup = function() {
   
 }
 
+// perform signin request
+var signin = function() {
+  
+  /*
+   * VALIDATION
+   */
+  var error = false;
+  $('#fail').addClass('hidden');
+  $('.control-group').removeClass('error'); 
+  $('help-inline').addClass('hidden');
+   
+  if (!$('input#email').val() || !isEmail($('input#email').val())) {
+    $('.control-group#email-group').addClass('error');
+    $('.control-group#email-group .help-inline').removeClass('hidden');
+    error = true;
+  }
+  
+  if (!$('input#password').val()) {
+    $('.control-group#password-group').addClass('error');
+    $('.control-group#password-group .help-inline').removeClass('hidden');
+    error = true;
+  }
+  
+  if (error === false) {
+    $.ajax({
+      url: "/signin_ajax.php",
+      type: 'POST',
+      data: $('#signin-form').serialize(),
+      dataType: "json"
+    }).done(function(data) { 
+      console.log(data);
+      // if we have some results
+      if (data.success) {
+        window.location.href = '/dashboard';
+      }
+      
+      else {
+        $('#fail').removeClass('hidden');
+      }
+      
+    });
+  }
+  
+}
+
 // validate email address
 var isEmail = function(email) {
   var regex = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
   return regex.test(email);
+}
+
+// select host/apikey for usage details
+var selectUsage = function(id, key) {
+  
+  $('#usage-list li').removeClass('active');
+  $('#usage'+id).addClass('active');
+  
+  $.ajax({
+    url: "/usage_ajax.php",
+    type: 'POST',
+    data: {"key": key},
+    dataType: 'html'
+  }).done(function(data) { 
+    
+    
+    $('#usage-info').html(data);
+    
+    
+  });
 }

@@ -1,4 +1,5 @@
 <?
+require_once('includes/functions.php');
 
 $name = $_POST['name'];
 $email = $_POST['email'];

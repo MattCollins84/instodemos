@@ -5,6 +5,14 @@
   margin-bottom: 5px!important;
 }
 
+.bbb {
+  border-bottom: 1px solid #000;
+}
+
+.pb {
+  padding-bottom: 5px;
+}
+
 .hidden {
   display: none;
 }
