@@ -151,7 +151,11 @@ h2.explain{line-height:34px;}
 .homecallout{color:#A2A9B4;}
 .homecallout h2{font:bold 18px/40px "Open Sans",Helvetica,Arial,Sans-serif; color:#2E3846;}
 
-
+.btn-center {
+  margin: 0 auto;
+  display: block;
+  width: 200px;
+}
 
 /*PORTFOLIO*/
 #portfolio{padding-top:100px; margin-top: 80px; padding-bottom:80px;}
@@ -192,7 +196,7 @@ h2.explain{line-height:34px;}
 
 footer {
   background: #d4ebf7;
-  height: 100px;
+  height: 50px;
   border-top: 5px solid #7CC5EA;
   padding-top:10px;
 }
@@ -274,3 +278,10 @@ div.colourpick.blue {
 .slide {
   margin-bottom: 10px;
 }
+
+/* Sidenav for Docs */
+
+#sidebar.affix {
+  top: 90px;
+}
+

@@ -58,7 +58,7 @@ require_once('includes/config.php');
 
   </head>
 
-  <body onload="prettyPrint()" id="home" data-spy="scroll" data-target=".navbar">
+  <body onload="prettyPrint()" id="home" data-spy="scroll" data-target=".docsidebar">
 
     <div class="row header">
        

@@ -20,7 +20,7 @@
         <ul class="nav nav-tabs">
           <li <?=($keysActive?'class="active"':'');?>><a href='/dashboard/keys'>API Keys</a></li>
           <li <?=($usageActive?'class="active"':'');?>><a href='/dashboard/usage'>Usage</a></li>
-          <li <?=($feedbackActive?'class="active"':'');?>><a href='/dashboard/feedback'>Feedback</a></li>
+          <!--<li <?=($feedbackActive?'class="active"':'');?>><a href='/dashboard/feedback'>Feedback</a></li>-->
         </ul>
         <div class="explain">
           <div class="row-fluid"> 

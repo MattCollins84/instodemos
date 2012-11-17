@@ -9,6 +9,7 @@
 
         <div class="explain">
           <p class="intro">Welcome.</p>
+          <a href='/signin' class='btn btn-center btn-large btn-success'>Sign-in &raquo;</a>
           <div class="row-fluid"> 
             
             <div class="span4">
