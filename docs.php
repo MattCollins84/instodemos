@@ -37,7 +37,7 @@
                 <p>To be able to do anything with Insto, you need to <a href='/signup'>sign-up</a>. Signing up will register you with Insto, creating an API key for you to use in your applications.</p>
                 <p>API keys are tied to the host that you supply, so make sure you enter the correct one!</p>
                 
-                <p>Once you are signed up, you need to <a href='/signin'>sign-in</a> to see your dashboard. From here you will be able to see all of the API keys that are registered against your user. At the current time, only one API is allowed per email address.</p>
+                <p>Once you are signed up, you need to <a href='/signin'>sign-in</a> to see your dashboard. From here you will be able to see all of the API keys that are registered against your user. At the current time, only one API key is allowed per email address.</p>
                 
                 <p>You will also be able to track how many people are connected to Insto via your application, as well as see how many messages you are sending per day. Message totals are updated once per day, and only include messages that your users receive.</p>
                 
@@ -45,11 +45,10 @@
               
               <div id='_setup'>
                 <h3>Initial Setup</h3>
-                <p>Configuring your application to use Insto is really simple. Just add the two script tags shown below into the &lt;head&gt; section of your HTML.</p>
+                <p>Configuring your application to use Insto is really simple. Just add the Insto Javascript API shown below into the &lt;head&gt; section of your HTML.</p>
                 
 <pre class='prettyprint'>
-&lt;script type="text/javascript" src="<?=$config['insto_host'];?>/socket.io/socket.io.js"&gt;&lt;/script&gt;
-&lt;script type="text/javascript" src="<?=$config['insto_host'];?>/lib/client.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="http://api.insto.co.uk:3000/lib/client.js"&gt;&lt;/script&gt;
 </pre>
 
                 <p>The first line sets up the <a href='http://socket.io'>Socket.IO</a> library, which is used to help make our Websocket implementation backwards compatible, whilst the second line loads the Insto client library, which creates a wrapper around our Websocket API.</p>
@@ -77,13 +76,13 @@ var callback = function(data) {
 }
 
 //connect to insto
-i = new InstoClient('API_KEY', userData, userQuery, callback, '<?=$config['insto_host'];?>');
+i = new InstoClient('API_KEY', userData, userQuery, callback);
 </pre>
 
                 <p>Lets quickly run through what the above is doing...</p>
                 
                 <h4>userData</h4>
-                <p>userData is a Javascript object that describes the connecting user. This object is a series a key/value pairs that consist of all of the properties required to be able to identify this user in the future. There is no schema associated with this object and can contain anything you wish, for example, this is also a valid userData object:</p>
+                <p>userData is a Javascript object that describes the connecting user. This object is a series of key/value pairs that consist of all of the properties required to be able to identify this user in the future. There is no schema associated with this object and can contain anything you wish, for example, this is also a valid userData object:</p>
 <pre class='prettyprint'>
 // user data
 var userData = {
@@ -101,7 +100,7 @@ var userData = {
                 <h4>callback</h4>
                 <p>The callback function will receive all messages that are sent to your InstoClient, and is the key to your implementation. It is a Javascript function that takes one parameter, which contains the received message.</p>
                 <p>The received message will take the form of whatever message was sent, and as such it is expected that the application understands the format it will receive the data and the field names that make up the message.</p>
-                <p>All received messages will contain an <b>_type</b> property, signalling what type of notification this is.</p>
+                <p>All received messages will contain a <b>_type</b> property, signalling what type of notification this is.</p>
                 <p>Example of a notification:</p>
 <pre class='prettyprint'>
 {
@@ -113,11 +112,11 @@ var userData = {
 
                 <h4>InstoClient</h4>
                 <p>Finally, we need to combine the above to actually connect to the Insto service.</p>
-                <p>the InstoClient class is used to connect, and all received notifications are relayed through it.</p>
+                <p>The InstoClient class is used to connect, and all received notifications are relayed through it to the callback function supplied.</p>
                 
 <pre class='prettyprint'>
 //connect to insto
-i = new InstoClient('API_KEY', userData, userQuery, callback, '<?=$config['insto_host'];?>');
+i = new InstoClient('API_KEY', userData, userQuery, callback);
 </pre>
               </div>
               
@@ -134,7 +133,8 @@ i = new InstoClient('API_KEY', userData, userQuery, callback, '<?=$config['insto
                 <p>Javascript object that will be sent to the receiving users.</p>
                 
                 <h4>sendToSelf</h4>
-                <h6>DEFAULT: false | ACCEPTS: true, false</h6>
+                <h6>DEFAULT: false</h6>
+                <h6>ACCEPTS: true, false</h6>
                 <p>Determine if the sending user will also receive the message, if they match the supplied userQuery.</p>
                 
                 <h4>Example</h4>

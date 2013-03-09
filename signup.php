@@ -13,10 +13,11 @@
             <div class="span4">
               <h3>Open Beta</h3>
               <p>Insto is currently in an open beta. This means you can sign up for free and start developing your apps.</p>
-              <p>Once signed up you will be able to view your usage statistics and leave feedback from your personalised dashboard.</p>
+              <p>Once signed up you will be able to view your usage statistics and access other features from your personalised dashboard.</p>
               
               <h3>Feedback</h3>
               <p>The purpose of running an open beta is to get feedback from the users of Insto to improve and tweak the system, so we may contact you from time to time.</p>
+              <p>Get in touch <a href='/contact'>here</a>.</p>
               
             </div>
 

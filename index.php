@@ -24,22 +24,21 @@
           <p class="intro">Create amazing real-time applications. Simply.</p>
           <div class="row-fluid"> 
             <div class="span4">
-              <h3>Endless possibilities</h3>
-              <p>Insto is designed to bring the real-time web to your application, in the simplest way possible.</p>
-              <p>Create real-time charts and statistics, activity streams, live data suites, synchronised UI experience, even online games!</p>
-              <p>The limit really is your imagination...</p>
+              <h3>What is it?</h3>
+              <p>Insto is a Websocket API designed to bring the real-time web to your application, in the simplest way possible.</p>
+              <p>Create real-time charts and statistics, activity streams, live data suites, synchronised UI experiences, push notifications, even online games!</p>
             </div>
 
             <div class="span4">
               <h3>Accessible</h3>
-              <p>Our Javascript library gets you up and running quickly and simply in the browser, whilst the simple REST API helps with integration into your existing systems.</p>
+              <p>Our Javascript library gets you up and running quickly and simply in the browser, whilst the simple REST API helps with integration into your existing applications.</p>
               <p>Sign-up to our free beta now!</p>
               <p><a href='/signup' class='btn btn-mini btn-success'>Sign-up &raquo;</a></p>
             </div>
 
             <div class="span4">
               <h3>Easy Implementation</h3>
-              <p>Enable Insto in your application with just one line of Javascript.</p>
+              <p>Use Insto in your application with just one line of Javascript.</p>
               <p>Our cloud based service means no infrastructure headaches for you, leaving you to focus on delivering an engaging experience for your users.</p>
             </div>
 
