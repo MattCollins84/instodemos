@@ -257,7 +257,7 @@ echo htmlentities("<form>
     }
     
     //connect to insto
-    i = new InstoClient('<?=$config['api_key'];?>', userData, userQuery, callback, '<?=$config['insto_host'];?>');
+    i = new InstoClient('<?=$config['api_key'];?>', userData, userQuery, callback<?=($config['insto_host']?", '".$config['insto_host']."'":"");?>);
       
     var sendMessage = function() {
       

@@ -128,3 +128,42 @@ var selectUsage = function(id, key) {
     
   });
 }
+
+// perform contact request
+var contact = function() {
+  
+  /*
+   * VALIDATION
+   */
+  var error = false;
+  $('#fail').addClass('hidden');
+  $('.control-group').removeClass('error'); 
+  $('help-inline').addClass('hidden');
+   
+  if (!$('input#name').val()) {
+    $('.control-group#name-group').addClass('error');
+    $('.control-group#name-group .help-inline').removeClass('hidden');
+    error = true;
+  }
+  
+  if (!$('input#email').val() || !isEmail($('input#email').val())) {
+    $('.control-group#email-group').addClass('error');
+    $('.control-group#email-group .help-inline').removeClass('hidden');
+    error = true;
+  }
+  
+  if (!$('input#subject').val()) {
+    $('.control-group#subject-group').addClass('error');
+    $('.control-group#subject-group .help-inline').removeClass('hidden');
+    error = true;
+  }
+  
+  if (!$('textarea#question').val()) {
+    $('.control-group#question-group').addClass('error');
+    $('.control-group#question-group .help-block').removeClass('hidden');
+    error = true;
+  }
+  
+  return !error;
+  
+}

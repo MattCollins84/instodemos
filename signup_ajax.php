@@ -5,6 +5,7 @@ $name = $_POST['name'];
 $email = $_POST['email'];
 $password = md5($_POST['password']);
 $hostname = $_POST['hostname'];
+$devhostname = $_POST['devhostname'];
 $instohost = $_POST['instohost'];
 
 $data = array();
@@ -12,6 +13,7 @@ $data['name'] = $name;
 $data['email'] = $email;
 $data['password'] = $password;
 $data['hostname'] = $hostname;
+$data['development_hostname'] = $devhostname;
 
 // create a new cURL resource
 $ch = curl_init();

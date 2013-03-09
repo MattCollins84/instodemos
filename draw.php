@@ -97,7 +97,7 @@
     }
     
     //connect to insto
-    i = new InstoClient('<?=$config['api_key'];?>', userData, userQuery, callback, '<?=$config['insto_host'];?>');
+    i = new InstoClient('<?=$config['api_key'];?>', userData, userQuery, callback, <?=($config['insto_host']?", '".$config['insto_host']."'":"");?>);
   
   </script>
   <script type='text/javascript' src='/js/draw.js'></script>

@@ -1,4 +1,10 @@
+.mb {
+	margin-bottom: 5px!important;
+}
 
+.mt {
+	margin-top: 5px!important;
+}
 
 .ml {
   margin-left: 5px!important;
@@ -183,19 +189,6 @@ h2.explain{line-height:34px;}
 #map {height:350px; width:100%; margin-bottom:80px; position: relative; z-index:2000; }
 
 #form fieldset {padding:0; margin-top:40px; margin-bottom:100px;}
-#contact-form .field {padding:0 0 10px 0; }
-#contact-form .input-text {height:38px;border:1px solid #ebebeb;border-top:1px solid #bfbfbf;background:#f5f5f5;padding:0 10px;font-family:Tahoma, Geneva, sans-serif;font-size:12px;}
-#contact-form .input-textarea {height:100px;border:1px solid #ebebeb;border-top:1px solid #bfbfbf;background:#f5f5f5;padding:10px;resize:none;font-family:Tahoma, Geneva, sans-serif;font-size:12px;overflow:hidden;}
-#contact-form .input-submit {cursor:pointer;font-size:12px;}
-#contact-form label {width:100px;float:left;line-height:30px;text-align:left; font-weight:400; color:#ff1440;font-size: 13px;}
-#contact-form .holder {position:relative;}
-#contact-form .message {display:none;position:absolute;top:20px;left:160px;color:#fff; font-weight:bold;}
-#contact-form .message .top {background:#000; width:428px;height:17px;line-height:0;}
-#contact-form .message .contents {background:#000; width:428px;padding:5px 0;}
-#contact-form .message .bottom {background:#000; width:428px;height:14px;line-height:0;margin-left:-1px;}
-#contact-form #alert {padding:0 20px;}
-#contact-form #alert ul {padding:10px 0 0 0;}
-#contact-form #alert ul li {line-height:18px;}
 
 footer {
   background: #d4ebf7;

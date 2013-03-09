@@ -43,10 +43,13 @@
                 
                 <div class="control-group" id='password-group'>
                   <label class="control-label" for="password">Password</label>
-                  <div class="controls">
+                  <div class="controls mb">
                     <input class='mb' type="password" id="password" name='password' placeholder="Password">
-                    <span class="help-inline hidden">You must provide two matching passwords</span><br />
-                    <input type="password" id="confirm" name='confirm' placeholder="Confirm"><span class="help-inline hidden">of at least six characters</span>
+                    <span class="help-inline hidden">You must provide two matching passwords</span>
+                  </div>
+                  <div class="controls">
+                    <input type="password" id="confirm" name='confirm' placeholder="Confirm">
+                    <span class="help-inline hidden">of at least six characters</span>
                   </div>
                 </div>
                 
@@ -55,10 +58,21 @@
                   <div class="controls">
                     <div class="input-prepend">
                       <span class="add-on">http://</span>
-                      <input id="hostname" name='hostname' type="text" placeholder="Hostname">
+                      <input id="hostname" name='hostname' type="text" placeholder="yourwebsite.com">
                     </div>
                     <span class="help-inline hidden">You must provide a hostname</span>
                     <span class="help-block">The domain of the website that will be using Insto.<br />Please don't include a leading WWW</span>
+                  </div>
+                </div>
+                
+                <div class="control-group" id='devhostname-group'>
+                  <label class="control-label" for="password">Development Hostname</label>
+                  <div class="controls">
+                    <div class="input-prepend">
+                      <span class="add-on">http://</span>
+                      <input id="devhostname" name='devhostname' type="text" placeholder="dev.yourwebsite.com">
+                    </div>
+                    <span class="help-block">Optional development domain.</span>
                   </div>
                 </div>
                 
@@ -68,7 +82,7 @@
                 
                 <div class="form-actions">
                   <button type="button" onclick='signup();' class="btn btn-primary">Sign-up!</button>
-                  <input type='hidden' name='instohost' id='instohost' value='<?=$config['insto_host'];?>' />
+                  <input type='hidden' name='instohost' id='instohost' value='<?=($config['insto_host']?$config['insto_host']:"http://api.insto.co.uk:3000");?>' />
                 </div>
               </form>
             

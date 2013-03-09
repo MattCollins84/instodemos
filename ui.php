@@ -568,7 +568,7 @@ if (data._type == 'connectedusers') {
     }
     
     //connect to insto
-    i = new InstoClient('<?=$config['api_key'];?>', userData, userQuery, callback, '<?=$config['insto_host'];?>');
+    i = new InstoClient('<?=$config['api_key'];?>', userData, userQuery, callback <?=($config['insto_host']?", '".$config['insto_host']."'":"");?>);
   
   </script>
   

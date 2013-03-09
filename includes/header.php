@@ -40,7 +40,7 @@ require_once('includes/config.php');
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="/ico/apple-touch-icon-57-precomposed.png">
     
-    <script type="text/javascript" src="<?=$config['insto_host'];?>/lib/client.js"></script>
+    <script type="text/javascript" src="<?=($config['insto_host']?$config['insto_host']:"http://api.insto.co.uk:3000");?>/lib/client.js"></script>
     
     <!--Load the AJAX API-->
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
@@ -49,16 +49,13 @@ require_once('includes/config.php');
       // Load the Visualization API and the piechart package.
       google.load('visualization', '1.0', {'packages':['corechart']});
 
-      var test = function() {
-        alert('done');
-      }
     </script>
     
 
   </head>
 
   <body onload="prettyPrint()" id="home" data-spy="scroll" data-target=".docsidebar">
-		
+
 		<script type="text/javascript">
 
 			var _gaq = _gaq || [];
@@ -91,12 +88,11 @@ require_once('includes/config.php');
             <div class="nav-collapse">
                 <ul class="nav pull-right">
                   <li <?=($homeActive?'class="active"':'');?>><a href="/" class="anchorLink">Home</a></li>
-                  <? if (!isset($_SESSION['user']) || !$_SESSION['user']) { ?>
-                    <li <?=($signupActive?'class="active"':'');?>><a href="/signup" class="anchorLink">Sign-up</a></li>
-                  <? } ?>
                   <li <?=($docsActive?'class="active"':'');?>><a href="/docs" class="anchorLink">Docs</a></li>
                   <li <?=($demosActive?'class="active"':'');?>><a href="/demos" class="anchorLink">Demos</a></li>
+                  <li <?=($contactActive?'class="active"':'');?>><a href="/contact" class="anchorLink">Contact</a></li>
                   <? if (!isset($_SESSION['user']) || !$_SESSION['user']) { ?>
+                    <li <?=($signupActive?'class="active"':'');?>><a href="/signup" class="anchorLink">Sign-up</a></li>
                     <li <?=($signinActive?'class="active"':'');?>><a href="/signin" class="anchorLink">Sign-in</a></li>
                   <? } else { ?>
                     <li <?=($dashboardActive?'class="active"':'');?>><a href="/dashboard" class="anchorLink">Dashboard</a></li>
