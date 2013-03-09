@@ -75,12 +75,24 @@ $data = getChartData($key);
   <p>Shows your usage from <input type='text' id='from' class='input input-small' /> to <input type='text' id='to' class='input input-small' /></p>
   <input type='hidden' id='_from' value='<?=$from;?>' onchange='updateChart();' />
   <input type='hidden' id='_to' value='<?=$to;?>' onchange='updateChart();' />
+  <div class='alert alert-error hidden' id='chart-error'>
+  	<h4>No data for the time period selected</h4>
+  </div>
   <div id='visualization'></div>
   
 </div>
 <script type="text/javascript">
 
 function drawVisualization(chartdata) {
+  
+  if (chartdata.length == 1) {
+  	$('#chart-error').removeClass('hidden');
+  	$('#visualization').addClass('hidden');
+  	return false;
+  }
+  
+  $('#chart-error').addClass('hidden');
+  $('#visualization').removeClass('hidden');
   
   // Some raw data (not necessarily accurate)
   var data = google.visualization.arrayToDataTable(chartdata);
@@ -94,6 +106,7 @@ function drawVisualization(chartdata) {
     chartArea: {top:20, left:40, height:'90%', width:'90%'}
   });
 }
+
 drawVisualization(<?=json_encode($data);?>);
 
 $('#from').datepicker({ dateFormat: "dd/mm/yy", altField: "#_from", altFormat: "yy-mm-dd", onSelect: function(date, obj) {

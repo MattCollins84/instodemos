@@ -1,8 +1,11 @@
 
 
-/*Custom Styles*/
-.mb {
-  margin-bottom: 5px!important;
+.ml {
+  margin-left: 5px!important;
+}
+
+.mr {
+  margin-right: 5px!important;
 }
 
 .bbb {

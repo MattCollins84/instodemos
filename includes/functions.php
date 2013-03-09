@@ -104,7 +104,7 @@ function getChartData($key, $from=false, $to=false) {
 
   // build up graph data
   $data = array(array("Messages", "Messages"));
-
+	
   foreach ($response as $day) {
     $r = array(strval($day['key'][3])."/".strval($day['key'][2]), intval($day['value']));
     $data[] = $r;
