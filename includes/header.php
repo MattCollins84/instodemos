@@ -40,7 +40,6 @@ require_once('includes/config.php');
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="/ico/apple-touch-icon-57-precomposed.png">
     
-    <!--<script type="text/javascript" src="<?=$config['insto_host'];?>/socket.io/socket.io.js"></script>-->
     <script type="text/javascript" src="<?=$config['insto_host'];?>/lib/client.js"></script>
     
     <!--Load the AJAX API-->
