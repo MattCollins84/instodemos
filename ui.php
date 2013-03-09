@@ -139,7 +139,7 @@
   }
   
   //connect to insto
-  i = new InstoClient('api_key', userData, userQuery, callback, 'http://insto.server.host:3000'); 
+  i = new InstoClient('api_key', userData, userQuery, callback); 
 </pre>
             <p>The above says that we are a user with two properties (defined in userData): a 'userType' of 'ui' and a random ID number. This ID number will be used later in the example.</p>
             <p>We are only concerned about users of the same type (userQuery).</p>

@@ -19,10 +19,10 @@
             </div>
 
             <div class="span4">
-              <h3>Drawing canvas</h3>
-              <p>Utilising the HTML5 canvas element we should how simple it is to create a shared drawing space to let your creativity run wild!</p>
-              <p>Draw Something has nothing on us...</p>
-              <p><a href='/draw' class='btn btn-success'>View demo</a></p>
+              <h3>Analytics</h3>
+              <p>Collect information on your users as they move around your site and display them in a fancy-pants real-time reporting suite.</p>
+              <p>We've not quite done that for you, but this demo will get you on your way...</p>
+              <p><a href='/analytics' class='btn btn-success'>View demo</a></p>
             </div>
 
             <div class="span4">

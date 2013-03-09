@@ -9,7 +9,7 @@
         
         <div class='span4'>
           <ul class='unstyled'>
-            <li><a href='#'><img src='/img/fb_logo.png' /></a> <a href='#'><img src='/img/twitter_logo.png' /></a></li>
+            <li><a href='https://twitter.com/insto_'><img src='/img/twitter_logo.png' /></a></li>
           </ul>
         </div>
         
@@ -55,6 +55,11 @@
 													longitude: 1006.8,
 													zoom: 15, });
 			});
+		</script>
+		<script type="text/javascript">stLight.options({publisher: "ca3afe8e-fef8-4dfd-8c34-5b62dd456eb4", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
+		<script>
+		var options={ "publisher": "ca3afe8e-fef8-4dfd-8c34-5b62dd456eb4", "position": "left", "ad": { "visible": false, "openDelay": 5, "closeDelay": 0}, "chicklets": { "items": ["facebook", "twitter", "linkedin", "googleplus", "sharethis"]}};
+		var st_hover_widget = new sharethis.widgets.hoverbuttons(options);
 		</script>
     
   </body>

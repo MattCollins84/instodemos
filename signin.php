@@ -17,7 +17,7 @@
               
               <h3>Feedback</h3>
               <p>The purpose of running an open beta is to get feedback from the users of Insto to improve and tweak the system, so we may contact you from time to time.</p>
-              
+              <p>Get in touch <a href='/contact'>here</a>.</p>
             </div>
 
             <div class="span8">

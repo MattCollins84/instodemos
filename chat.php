@@ -138,7 +138,7 @@ echo htmlentities("<form>
   }
   
   //connect to insto
-  i = new InstoClient('api_key', userData, userQuery, callback, 'http://insto.server.host:3000'); 
+  i = new InstoClient('api_key', userData, userQuery, callback); 
 </pre>
             <p>The above says that we are a user with one property (defined in userData): a 'userType' of 'chat'. And we are only concerned about users of the same type (userQuery).</p>
           </div>
