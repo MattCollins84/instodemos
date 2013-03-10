@@ -208,7 +208,7 @@ echo htmlentities("<form>
   
   <script type='text/javascript'>
     
-    var i;
+    var insto;
     // callback
     var callback = function(data) {
       console.log(data);
@@ -257,7 +257,7 @@ echo htmlentities("<form>
     }
     
     //connect to insto
-    i = new InstoClient('<?=$config['api_key'];?>', userData, userQuery, callback<?=($config['insto_host']?", '".$config['insto_host']."'":"");?>);
+    insto = new InstoClient('<?=$config['api_key'];?>', userData, userQuery, callback<?=($config['insto_host']?", '".$config['insto_host']."'":"");?>);
       
     var sendMessage = function() {
       
@@ -282,7 +282,7 @@ echo htmlentities("<form>
       }
       
       // send!
-      i.send(sendQuery, sendData, true);
+      insto.send(sendQuery, sendData, true);
       
       // clear out message field
       $('#message').val("");

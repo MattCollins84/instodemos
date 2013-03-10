@@ -455,7 +455,7 @@ if (data._type == 'connectedusers') {
       
       render();
       
-      i.send({userType:'ui'}, {red: red, green: green, blue: blue});
+      insto.send({userType:'ui'}, {red: red, green: green, blue: blue});
       
     };
     
@@ -464,7 +464,7 @@ if (data._type == 'connectedusers') {
       $('#colourbox').css('borderColor', 'rgb('+red[1]+','+green[1]+','+blue[1]+')');
     }
     
-    var i;
+    var insto;
     // callback
     var callback = function(data) {
       
@@ -503,7 +503,7 @@ if (data._type == 'connectedusers') {
               userType: 'ui'
             }
             
-            i.send(sendContextquery, sendContext);
+            insto.send(sendContextquery, sendContext);
             
           }
           
@@ -534,7 +534,7 @@ if (data._type == 'connectedusers') {
         // get current context
         if (data.users.length) {
           var contextQuery = data.users[0];
-          i.send(contextQuery, {context: false, id: userData.id});
+          insto.send(contextQuery, {context: false, id: userData.id});
         }
                
       }
@@ -568,7 +568,7 @@ if (data._type == 'connectedusers') {
     }
     
     //connect to insto
-    i = new InstoClient('<?=$config['api_key'];?>', userData, userQuery, callback <?=($config['insto_host']?", '".$config['insto_host']."'":"");?>);
+    insto = new InstoClient('<?=$config['api_key'];?>', userData, userQuery, callback <?=($config['insto_host']?", '".$config['insto_host']."'":"");?>);
   
   </script>
   
