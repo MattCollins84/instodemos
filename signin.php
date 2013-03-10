@@ -23,7 +23,7 @@
             <div class="span8">
               <h3>Sign in</h3>
               
-              <form class="form-horizontal" id='signin-form'>
+              <form class="form-horizontal" id='signin-form' onsubmit='return signin();'>
                 
                 <div class="control-group" id='email-group'>
                   <label class="control-label" for="email">Email</label>
@@ -46,7 +46,7 @@
                 </div>
                 
                 <div class="form-actions">
-                  <button type="button" onclick='signin();' class="btn btn-primary">Sign-in!</button>
+                  <button type="submit" class="btn btn-primary">Sign-in!</button>
                 </div>
               </form>
             

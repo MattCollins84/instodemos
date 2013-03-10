@@ -101,6 +101,8 @@ var signin = function() {
     });
   }
   
+  return false;
+  
 }
 
 // validate email address

@@ -100,7 +100,7 @@ require_once('includes/config.php');
                     <li <?=($signinActive?'class="active"':'');?>><a href="/signin" class="anchorLink">Sign-in</a></li>
                   <? } else { ?>
                     <li <?=($dashboardActive?'class="active"':'');?>><a href="/dashboard" class="anchorLink">Dashboard</a></li>
-                    <li <?=($homeActive?'class="active"':'');?>><a href="/logout" class="anchorLink">Logout</a></li>
+                    <li><a href="/logout" class="anchorLink">Logout</a></li>
                   <? } ?>
                 </ul>
             </div>

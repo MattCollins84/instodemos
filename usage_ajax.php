@@ -4,7 +4,7 @@ require_once('includes/functions.php');
 
 //get current connections
 $key = $_POST['key'];
-$url = $config['insto_host']."/usage/".$key."/connections";
+$url = ($config['insto_host']?$config['insto_host']:"http://api.insto.co.uk:3000")."/usage/".$key."/connections";
 
 // create a new cURL resource
 $ch = curl_init();
@@ -26,6 +26,10 @@ $info = curl_getinfo($ch);
 
 // close cURL resource, and free up system resources
 curl_close($ch);
+
+if (!$response['connections']) {
+	$response['connections'] = 0;
+}
 
 ?>
 <div class='alert alert-success'>
