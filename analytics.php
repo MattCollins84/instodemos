@@ -247,6 +247,8 @@ var userDisconnect = function(data) {
 			// callback
 			var callback = function(data) {
 				
+				//console.log(data);
+				
 				switch (data._type) {
 				
 					case "connected":
