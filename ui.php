@@ -1,5 +1,6 @@
 <?
   $demosActive = true;
+  $title = "UI Demo";
   require_once('includes/header.php');
 ?>
   
@@ -525,11 +526,19 @@ if (data._type == 'connectedusers') {
         }
       }
       
+      // handle connection
+      if (data._type == 'connected') {
+        
+        $('#connected').html(calculateConnectedUsers(data._id, "in"));
+        
+      }
+      
       // handle connecting
       if (data._type == 'connectedusers') {
         
-        var cu = data.users.length+1;
-        $('#connected').html(cu);
+        for (var u in data.users) {
+        	$('#connected').html(calculateConnectedUsers(data.users[u]._id, "in"));
+        }
         
         // get current context
         if (data.users.length) {
@@ -542,16 +551,14 @@ if (data._type == 'connectedusers') {
       // handle others connecting
       if (data._type == 'connect') {
         
-        var cu = parseInt($('#connected').html()) + 1;
-        $('#connected').html(cu);
+        $('#connected').html(calculateConnectedUsers(data._id, "in"));
         
       }
       
       // handle others disconnecting
       if (data._type == 'disconnect') {
         
-        var cu = parseInt($('#connected').html()) - 1;
-        $('#connected').html(cu);
+        $('#connected').html(calculateConnectedUsers(data._id, "out"));
         
       }
     }

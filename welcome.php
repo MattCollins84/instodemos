@@ -1,5 +1,6 @@
 <?
   $signupActive = true;
+  $title = "Welcome";
   require_once('includes/header.php');
 ?>
     

@@ -2,6 +2,8 @@
   session_start();
   date_default_timezone_set("Europe/London");
   global $config;
+	
+	$thedomain = str_replace("www.", "", $_SERVER['HTTP_HOST']);
 
 	//overall settings array
 	$settings = array();
@@ -21,7 +23,7 @@
 	// find which config we need
 	foreach ($settings as $s) {
 		
-		if (in_array($_SERVER['HTTP_HOST'], $s['domain'])) {
+		if (in_array($thedomain, $s['domain'])) {
 			$config = $s;
 			break;
 		}

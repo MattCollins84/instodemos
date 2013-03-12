@@ -1,5 +1,6 @@
 <?
   $signinActive = true;
+  $title = "Sign in";
   require_once('includes/header.php');
 ?>
     

@@ -1,5 +1,6 @@
 <?
   $demosActive = true;
+  $title = "Drawing Demo";
   require_once('includes/header.php');
 ?>
   

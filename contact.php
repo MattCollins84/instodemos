@@ -1,5 +1,6 @@
 <?
   $contactActive = true;
+  $title = "Contact";
   require_once('includes/header.php');
   
   if (isset($_POST['email']) && $_POST['email']) {

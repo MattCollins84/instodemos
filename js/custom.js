@@ -169,3 +169,19 @@ var contact = function() {
   return !error;
   
 }
+
+// function to calculate connected users
+var _users = {};
+var calculateConnectedUsers = function(id, direction) {
+	
+	if (direction == "out" && id) {
+		if (_users[id]) {
+			delete _users[id];
+		}
+	} else if (direction == "in" && id) {
+		_users[id] = true;
+	}
+	
+	return Object.keys(_users).length;
+	
+}

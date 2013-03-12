@@ -11,6 +11,7 @@
   else { $keysActive = true; }
   
   $dashboardActive = true;
+  $title = "Dashboard";
   require_once('includes/header.php');
 ?>
     

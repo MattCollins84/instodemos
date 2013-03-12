@@ -1,5 +1,6 @@
 <?
   $demosActive = true;
+  $title = "Analytics Demo";
   require_once('includes/header.php');
 ?>
   
@@ -245,8 +246,12 @@ var userDisconnect = function(data) {
 
 			// callback
 			var callback = function(data) {
-			
+				
 				switch (data._type) {
+				
+					case "connected":
+						connected(data);
+						break;
 				
 					case "connectedusers":
 						connectedUsers(data);
@@ -267,12 +272,18 @@ var userDisconnect = function(data) {
 			
 			
 			}
-		
-			// handle connecting
+			
+			// handle connection
+			var connected = function(data) {
+				$('#connected').html(calculateConnectedUsers(data._id, "in"));
+			}
+			
+			// handle connected users
 			var connectedUsers = function(data) {
 			
-				var cu = data.users.length+1;
-				$('#connected').html(cu);
+				for (var u in data.users) {
+        	$('#connected').html(calculateConnectedUsers(data.users[u]._id, "in"));
+        }
 			
 				for (var u in data.users) {
 					updateChart(data.users[u].browser, 1);
@@ -283,8 +294,7 @@ var userDisconnect = function(data) {
 			// handle others connecting
 			var userConnect = function(data) {
 			
-				var cu = parseInt($('#connected').html()) + 1;
-				$('#connected').html(cu);
+				$('#connected').html(calculateConnectedUsers(data._id, "in"));
 			
 				updateChart(data.browser, 1);
 			
@@ -293,8 +303,7 @@ var userDisconnect = function(data) {
 			// handle others disconnecting
 			var userDisconnect = function(data) {
 			
-				var cu = parseInt($('#connected').html()) - 1;
-				$('#connected').html(cu);
+				$('#connected').html(calculateConnectedUsers(data._id, "out"));
 			
 				updateChart(data.browser, -1);
 			
@@ -334,12 +343,12 @@ var userDisconnect = function(data) {
 			}
 		
 			//update with this users details
-			updateChart(BrowserDetect.browser, 1);
+			updateChart((BrowserDetect.browser?BrowserDetect.browser:"Unknown"), 1);
 		
 			// user data
 			var userData = {
 				userType: "analytics",
-				browser: BrowserDetect.browser
+				browser: (BrowserDetect.browser?BrowserDetect.browser:"Unknown")
 			}
 		
 			// user query

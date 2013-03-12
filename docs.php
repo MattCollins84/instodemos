@@ -1,5 +1,6 @@
 <?
   $docsActive = true;
+  $title = "Docs";
   require_once('includes/header.php');
 ?>
 
@@ -101,21 +102,35 @@ var userData = {
                 <p>The callback function will receive all messages that are sent to your InstoClient, and is the key to your implementation. It is a Javascript function that takes one parameter, which contains the received message.</p>
                 <p>The received message will take the form of whatever message was sent, and as such it is expected that the application understands the format it will receive the data and the field names that make up the message.</p>
                 <p>All received messages will contain a <b>_type</b> property, signalling what type of notification this is.</p>
-                <p>Example of a notification:</p>
+                <p>All users that are returned via queries or connection/disconnection notifications will contain an <b>_id</b> property, which is the unique ID for this user.</p>
+                
 <pre class='prettyprint'>
+// Example of a notification
 {
   _type: "notification",
+  _id: "jdshf-8347jdf45",
   message: "this is a test notification",
   sender_name: "Matt"
 }
 </pre>
+								
+								<h4>Connection</h4>
+								<p>Once connected, a notification with a _type of 'connected' and an _id showing the unique ID for this user will be returned via the callback function.</p>
 
+<pre class='prettyprint'>
+// example 'connected' notification
+{
+  _type: "connected",
+  _id: "34534-sdf245fgdfg"
+}
+</pre>
+								
                 <h4>InstoClient</h4>
                 <p>Finally, we need to combine the above to actually connect to the Insto service.</p>
                 <p>The InstoClient class is used to connect, and all received notifications are relayed through it to the callback function supplied.</p>
                 
 <pre class='prettyprint'>
-//connect to insto
+// connect to insto
 i = new InstoClient('API_KEY', userData, userQuery, callback);
 </pre>
               </div>
@@ -148,7 +163,7 @@ var userQuery = {
 // message
 var messageData = {
   sendingUser: "Steven",
-  "message": "This is an example"
+  message: "This is an example"
 }
 
 // send
@@ -210,7 +225,8 @@ i.query(userQuery);
 {
   userType: "chat",
   name: "Matt",
-  _type: "connect"
+  _type: "connect",
+  _id: "234234-dfg7d6dfg"
 }
 </pre>
 
@@ -219,7 +235,8 @@ i.query(userQuery);
 {
   userType: "chat",
   name: "Matt",
-  _type: "disconnect"
+  _type: "disconnect",
+  _id: "234234-dfg7d6dfg"
 }
 </pre>
 
@@ -229,11 +246,13 @@ i.query(userQuery);
   users: [
     {
       userType: "chat",
-      name: "Matt"
+      name: "Matt",
+      _id: "234234-dfg7d6dfg"
     },
     {
       userType: "chat",
-      name: "Steven"
+      name: "Steven",
+      _id: "234234-dfg7d6dfg"
     }
   ],
   _type: "connectedusers"
