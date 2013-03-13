@@ -79,7 +79,7 @@ function getChartData($key, $from=false, $to=false) {
     $to = date("Y-m-d");
   }
   
-  $url = $config['insto_host']."/usage/".$key."/messages?from=".$from."&to=".$to;
+  $url = ($config['insto_host']?$config['insto_host']:"http://api.insto.co.uk:3000")."/usage/".$key."/messages?from=".$from."&to=".$to;
 
   // create a new cURL resource
   $ch = curl_init();
@@ -104,11 +104,12 @@ function getChartData($key, $from=false, $to=false) {
 
   // build up graph data
   $data = array(array("Messages", "Messages"));
-	
+	$data[] = array("", 0);
   foreach ($response as $day) {
     $r = array(strval($day['key'][3])."/".strval($day['key'][2]), intval($day['value']));
     $data[] = $r;
   }
+  $data[] = array("", 0);
   
   return $data;
 }
