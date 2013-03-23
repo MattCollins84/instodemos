@@ -30,6 +30,7 @@ require_once("includes/config.php");
   	
   	<div id="container">
 			<canvas id="canvas" width=800 height=600 data-processing-sources="dandelion.pjs"></canvas>
+			<a href="/" id='logo'><img src='/img/top_logo.png' /></a>
 		</div>
 		<ul id='tweets'>
 			
@@ -49,6 +50,7 @@ require_once("includes/config.php");
 			}
 			
 			var callback = function(data) {
+				console.log(data);
 				if (data._type == 'notification') {
 					tweet();
 					
@@ -61,7 +63,7 @@ require_once("includes/config.php");
 			}
 		
 			//connect to insto
-			insto = new InstoClient('98e4bbcec97a36cb591f6d3da62a2754', userData, userQuery, callback , 'http://localhost:3000');
+			insto = new InstoClient('98e4bbcec97a36cb591f6d3da62a2754', userData, userQuery, callback , '<?=($config['insto_host']?$config['insto_host']:"http://api.insto.co.uk:3000");?>');
   	</script>
   </body>
 </html>

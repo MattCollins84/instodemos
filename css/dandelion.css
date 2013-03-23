@@ -16,6 +16,12 @@ a, a:link, a:visited {
     border-radius: 12px;
 }
 
+#logo {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+}
+
 ul {
 	float: left;
 	height: 600px;
