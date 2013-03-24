@@ -31,6 +31,7 @@ require_once("includes/config.php");
   	<div id="container">
 			<canvas id="canvas" width=800 height=600 data-processing-sources="dandelion.pjs"></canvas>
 			<a href="/" id='logo'><img src='/img/top_logo.png' /></a>
+			<p id='attr'>With thanks to the clever people <a href='http://zgrossbart.github.com/Dandelion/'>here</a></p>
 		</div>
 		<ul id='tweets'>
 			

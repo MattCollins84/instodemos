@@ -22,6 +22,16 @@ a, a:link, a:visited {
 	right: 10px;
 }
 
+#attr {
+	position: absolute;
+	bottom: 0px;
+	right: 10px;
+}
+
+#attr a {
+	color: #0279e1;
+}
+
 ul {
 	float: left;
 	height: 600px;
