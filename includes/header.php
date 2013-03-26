@@ -7,8 +7,8 @@ require_once('includes/config.php');
     <meta charset="utf-8">
     <title>&raquo; Insto - <?=((isset($title) && $title)?$title:"Real-time, Real-easy");?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Insto allows you to add real time web technology to your website. Get real time statistics, add real time communication between you and your users and experience the true push of information. With our Realtime Framework, develop your own real time applications.">
-    <meta name="keywords" content="realtime, real time, real-time, real time web, realtime web, websockets, web socket, cloud, cloud based, real time statistics, real time framework, framework, web development, developers">
+    <meta name="description" content="Insto is an API designed to bring the real-time web to your application, in the simplest way possible. Our Javascript library and REST API lets you add scalable real-time functionality within minutes, without any of the hassle.">
+    <meta name="keywords" content="realtime, real time, real-time, real time web, realtime web, websockets, web socket, cloud, cloud based, real time statistics, real time framework, framework, web development, developers, api, nodejs, node js, push notifications">
     <meta name="author" content="">
 
     <!-- Le styles -->
