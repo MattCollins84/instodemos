@@ -34,6 +34,16 @@
             </div>
 
           </div> 
+          
+          <div class="row-fluid"> 
+            <div class="span4">
+              <h3>Social Media</h3>
+              <p>This demo is a bit different. We have created another app that monitors the <a href='https://dev.twitter.com/docs/streaming-apis' target='_blank'>Twitter streaming API</a> for mentions of Insto, and creates a cool effect whenever someone tweets about us!</p>
+              <p>Thanks to some clever Javascript that we borrowed from <a href='http://zgrossbart.github.com/Dandelion/' target='_blank'>here</a>.</p>
+              <p><a href='/tweet' class='btn btn-success'>View demo</a></p>
+            </div>
+
+          </div> 
               
         </div>
       </div>
