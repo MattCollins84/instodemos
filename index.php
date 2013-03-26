@@ -25,21 +25,49 @@
           <div class="row-fluid"> 
             <div class="span4">
               <h3>What is it?</h3>
-              <p>Insto is a Websocket API designed to bring the real-time web to your application, in the simplest way possible.</p>
-              <p>Create real-time charts and statistics, activity streams, live data suites, synchronised UI experiences, push notifications, even online games!</p>
+              <p>Insto is an API designed to bring the real-time web to your application, in the simplest way possible.</p>
+              <p>Our Javascript library and REST API lets you add scalable real-time functionality within minutes, without any of the hassle.</p>
             </div>
 
             <div class="span4">
-              <h3>Accessible</h3>
-              <p>Our Javascript library gets you up and running quickly and simply in the browser, whilst the simple REST API helps with integration into your existing applications.</p>
-              <p>Sign-up to our free beta now!</p>
-              <p><a href='/signup' class='btn btn-mini btn-success'>Sign-up &raquo;</a></p>
+              <h3>How does it work?</h3>
+              <p>Insto utilises a combination of <a href='http://www.websocket.org/' target='_blank'>HTML5 Websockets</a> and <a href='http://nodejs.org' target='_blank'>Node.JS</a> to make the real-time communication possible, with our Javascript library providing compatibility all the way back to Internet Explorer 6.</p>
+              <p>However, as Insto is a hosted service you don't need to worry about any of this and instead can focus on creating amazing applications.</p>
+              
             </div>
 
             <div class="span4">
-              <h3>Easy Implementation</h3>
-              <p>Use Insto in your application with just one line of Javascript.</p>
-              <p>Our cloud based service means no infrastructure headaches for you, leaving you to focus on delivering an engaging experience for your users.</p>
+              <h3>What can I do?</h3>
+              <p>The purpose of Insto is to give you the power to add real-time functionality to your applications.</p>
+              <p>Whether this means updating graphs and charts in real-time, connecting users in an online game, creating presentation software, pushing high quality leads to your sales team or simply creating a chat service... Insto can do it.</p>
+            </div>
+
+          </div>
+          
+          <div class="row-fluid"> 
+            <div class="span4">
+              <h3>Why should you care?</h3>
+              <p>We believe that developers should be concentrating on creating exciting applications, not managing complicated systems or infrastructure.</p>
+              <p>Aside from being <b>powerful</b>, <b>flexible</b> and a <b>very simple</b> way to implement real-time functionality into your application, Insto is also extremely scalable.</p>
+              <p>And because we handle all the heavy lifting and logistics, you don't have to worry about anything and can be up and running in minutes.</p>
+            </div>
+
+            <div class="span8">
+              <h3>Show me.</h3>
+              <p>Simply include our Javascript library, define your user and connect! You are now ready to use Insto.</p>
+              
+ <pre class="prettyprint">
+&lt;script type="text/javascript" src="http://api.insto.co.uk:3000/lib/client.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript"&gt;
+  // Define a user
+  var user = { user_id: 123, name: "John Smith", office: "London" };
+  // Connect
+  var insto = new InstoClient('api_key', user, query, callback);
+  // Send a notification to everyone in the Manchester office
+  insto.send({ office: "Manchester" }, { foo: "bar" });
+&lt;/script&gt;
+</pre>             
+              
             </div>
 
           </div> 

@@ -95,6 +95,7 @@ require_once('includes/config.php');
                   <li <?=($docsActive?'class="active"':'');?>><a href="/docs" class="anchorLink">Docs</a></li>
                   <li <?=($demosActive?'class="active"':'');?>><a href="/demos" class="anchorLink">Demos</a></li>
                   <li <?=($contactActive?'class="active"':'');?>><a href="/contact" class="anchorLink">Contact</a></li>
+                  <li><a href="http://blog.insto.co.uk" class="anchorLink" target='_blank'>Blog</a></li>
                   <? if (!isset($_SESSION['user']) || !$_SESSION['user']) { ?>
                     <li <?=($signupActive?'class="active"':'');?>><a href="/signup" class="anchorLink">Sign-up</a></li>
                     <li <?=($signinActive?'class="active"':'');?>><a href="/signin" class="anchorLink">Sign-in</a></li>

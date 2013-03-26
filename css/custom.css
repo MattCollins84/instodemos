@@ -243,6 +243,11 @@ div.colourpick.blue {
 		position: fixed;
 	}
 	
+	footer {
+		height: auto;
+		padding: 10px;
+	}
+	
 }
 
 /* tidy up different sizes */
