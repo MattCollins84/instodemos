@@ -14,9 +14,6 @@ require_once('includes/config.php');
     <!-- Le styles -->
     <link href="/css/bootstrap.css" rel="stylesheet">
     <link href="/css/bootstrap-responsive.css" rel="stylesheet">
-    <link href="/css/m-styles.min.css" rel="stylesheet">
-    <link href="/css/m-forms.min.css" rel="stylesheet">
-    <link href="/css/m-buttons.css" rel="stylesheet">
     <link href="/css/custom.css" rel="stylesheet">
     <link href="/css/prettify.css" rel="stylesheet">
     <link href="/css/jqueryui.css" rel="stylesheet">
