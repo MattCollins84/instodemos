@@ -13,7 +13,7 @@
         <p class="intro">Connected users: <span id='connected' class='badge badge-success badge-large'>0</span></p>
         <div class="row"> 
           
-          <div class='span8' id='chart' class='analyticsChart'>
+          <div class='span8 analyticsChart' id='chart'>
 
             
           </div>
