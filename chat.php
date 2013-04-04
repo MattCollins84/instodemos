@@ -56,7 +56,7 @@
   
   
   <!-- code! -->
-  <div class="row-fluid section" id="features">
+  <div class="row-fluid section">
     <div class="container"> 
 
       <div class="explain">
@@ -206,7 +206,7 @@ echo htmlentities("<form>
         </div>
     </div>
   </div>
-  
+  </div>
   <script type='text/javascript'>
     
     var insto;

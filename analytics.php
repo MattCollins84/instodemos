@@ -34,7 +34,7 @@
   </div>
   
   <!-- code! -->
-  <div class="row-fluid section" id="features">
+  <div class="row-fluid section">
     <div class="container"> 
 
       <div class="explain">
