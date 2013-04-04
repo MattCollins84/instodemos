@@ -9,7 +9,7 @@
         
         <div class='span4'>
           <ul class='unstyled'>
-            <li><a href='https://twitter.com/insto_' target='_blank'><img src='/img/twitter_logo.png' /></a></li>
+            <li><a href='https://twitter.com/insto_' target='_blank'><img src='/img/twitter_logo.png' alt='Twitter' /></a></li>
           </ul>
         </div>
         

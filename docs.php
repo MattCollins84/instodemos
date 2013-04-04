@@ -215,7 +215,7 @@ i.query(userQuery);
 
               </div>
               
-              <div id='_ws_query'>
+              <div id='_ws_connected'>
                 <h3>Connected Users</h3>
                 <p>If a userQuery is supplied at the point of connecting to Insto, notifications will be sent to alert the user when another user who matches this userquery connects or disconnects. A similar notification is also sent as soon as this user connects, providing details of all currently connected users who match the supplied userQuery.</p>
                 
