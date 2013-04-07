@@ -24,7 +24,6 @@
                 <li><a href="#_ws_send">.send()</a></li>
                 <li><a href="#_ws_broadcast">.broadcast()</a></li>
                 <li><a href="#_ws_query">.query()</a></li>
-                <li><a href="#_ws_connected">Connected Users</a></li>
                 <li class="nav-header">RESTful API</li>
                 <li><a href="#_rf_send">Send</a></li>
                 <li><a href="#_rf_broadcast">Broadcast</a></li>
@@ -323,51 +322,6 @@ i.query(userQuery);
 
               </div>
               
-              <div id='_ws_connected'>
-                <h3>Connected Users</h3>
-                <p>If a userQuery is supplied at the point of connecting to Insto, notifications will be sent to alert the user when another user who matches this userquery connects or disconnects. A similar notification is also sent as soon as this user connects, providing details of all currently connected users who match the supplied userQuery.</p>
-                
-                <h4>Example</h4>
-                <p>This shows a connect notification, when a new user connects:</p>
-<pre class='prettyprint'>
-{
-  userType: "chat",
-  name: "Matt",
-  _type: "connect",
-  _id: "234234-dfg7d6dfg"
-}
-</pre>
-
-                <p>This shows a disconnect notification, when a user disconnects:</p>
-<pre class='prettyprint'>
-{
-  userType: "chat",
-  name: "Matt",
-  _type: "disconnect",
-  _id: "234234-dfg7d6dfg"
-}
-</pre>
-
-                <p>This shows all connected users at the point of connection:</p>
-<pre class='prettyprint'>
-{
-  users: [
-    {
-      userType: "chat",
-      name: "Matt",
-      _id: "234234-dfg7d6dfg"
-    },
-    {
-      userType: "chat",
-      name: "Steven",
-      _id: "234234-dfg7d6dfg"
-    }
-  ],
-  _type: "connectedusers"
-}
-</pre>
-
-              </div>
               <div id='_rf_send'>
                 <h1>RESTful API</h1>
                 <h3>Send</h3>
