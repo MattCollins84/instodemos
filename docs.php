@@ -20,6 +20,7 @@
                 <li><a href="#_setup">Initial Setup</a></li>
                 <li><a href="#_connecting">Connecting to Insto</a></li>
                 <li class="nav-header">Websocket API</li>
+                <li><a href="#_ws_notifications">Notifications</a></li>
                 <li><a href="#_ws_send">.send()</a></li>
                 <li><a href="#_ws_broadcast">.broadcast()</a></li>
                 <li><a href="#_ws_query">.query()</a></li>
@@ -100,9 +101,9 @@ var userData = {
                 
                 <h4>callback</h4>
                 <p>The callback function will receive all messages that are sent to your InstoClient, and is the key to your implementation. It is a Javascript function that takes one parameter, which contains the received message.</p>
-                <p>The received message will take the form of whatever message was sent, and as such it is expected that the application understands the format it will receive the data and the field names that make up the message.</p>
-                <p>All received messages will contain a <b>_type</b> property, signalling what type of notification this is.</p>
-                <p>All users that are returned via queries or connection/disconnection notifications will contain an <b>_id</b> property, which is the unique ID for this user.</p>
+                <p>The received notification will take the form of whatever message was sent, and as such it is expected that the application understands the format it will receive the data and the field names that make up the message.</p>
+                <p>All received notification will contain a <b>_type</b> property, signalling what type of notification this is whilst an "_id" property will show the unique ID of the sending user.</p>
+                <p>All users that are returned via queries or connection/disconnection notifications will also contain an <b>_id</b> property, which is the unique ID for this user.</p>
                 
 <pre class='prettyprint'>
 // Example of a notification
@@ -135,8 +136,115 @@ i = new InstoClient('API_KEY', userData, userQuery, callback);
 </pre>
               </div>
               
-              <div id='_ws_send'>
+              <div>
                 <h1>Websocket API</h1>
+                <p>The Websocket API is used to send and receive notifications between connected clients in real-time.</p>
+                
+                <h3 id='_ws_notifications'>Notifications</h3>
+                <p>Notifications can be sent and received by any connected InstoClient, and when they are received they are passed to the callback function for the developer to handle as required.</p>
+                <p>There are six types of notification, shown below.</p>
+								
+								<h4>Connected</h4>
+								<p><b>_type</b>: connected</p>
+								<p>Received when an InstoClient has successfully connected to the Insto server</p>
+<pre class='prettyprint'>
+{
+  _type: "connected",
+  _id: "kjghdfgosdkfj-65"
+}
+</pre>
+								
+								<h4>Connect</h4>
+								<p><b>_type</b>: connect</p>
+								<p>Received when another Insto client connects to the server and matches the supplied userQuery. Provides this clients userData object.</p>
+<pre class='prettyprint'>
+{
+  _type: "connect",
+  _id: "hhgjjudnySDF-34",
+  name: "John Smith",
+  department: "sales"
+}
+</pre>
+
+								<h4>Disconnect</h4>
+								<p><b>_type</b>: disconnect</p>
+								<p>Received when another Insto client disconnects from the server and matches the supplied userQuery. Provides this clients userData object.</p>
+<pre class='prettyprint'>
+{
+  _type: "disconnect",
+  _id: "hhgjjudnySDF-34",
+  name: "John Smith",
+  department: "sales"
+}
+</pre>
+
+								<h4>Connected Users</h4>
+								<p><b>_type</b>: connectedusers</p>
+								<p>Received after connection if any currently connected Insto clients match the supplied userQuery. Provides an array of matching clients userData objects.</p>
+<pre class='prettyprint'>
+{
+  _type: "connectedusers",
+  users: [
+    {
+      _id: "hhgjjudnySDF-34",
+      name: "John Smith",
+      department: "sales"
+    },
+    {
+      _id: "jhdfsSDFsh-34",
+      name: "Fiona Clarke",
+      department: "finance"
+    } 
+  ]
+}
+</pre>
+								
+								<h4>Notification</h4>
+								<p><b>_type</b>: notification</p>
+								<p>Received every time an InstoClient receives a notification from another InstoClient, either via a broadcast message or matching a userQuery on a direct message.</p>
+<pre class='prettyprint'>
+insto.send({department: "sales"}, { foo: "Bar" }); // send notification to all users in the sales department
+
+{
+  _type: "notification",
+  _id: "ksjhdfjkksdf-45", //the unique ID of the sender
+  foo: "bar"
+}
+
+insto.broadcast({ hello: "World" }); //send notification to ALL connected users
+
+{
+  _type: "notification",
+  _id: "ksjhdfjkksdf-45", //the unique ID of the sender
+  hello: "World"
+}
+</pre>
+
+								<h4>Query</h4>
+								<p><b>_type</b>: query</p>
+								<p>Received as a response from the query method (insto.query()). Provides an array of other connected users that match the supplied query.</p>
+<pre class='prettyprint'>
+insto.query({department: "sales"}); // find all connected users in the sales department
+
+{
+  _type: "query",
+  users: [
+    {
+      _id: "hhgjjudnySDF-34",
+      name: "John Smith",
+      department: "sales"
+    },
+    {
+      _id: "jhdfsSDFsh-34",
+      name: "Fiona Clarke",
+      department: "sales"
+    } 
+  ]
+}
+</pre>
+								
+								<h1 id='_ws_send'>Methods</h1>
+								             
                 <h3>.send( userQuery, messageData, sendToSelf )</h3>
                 <p>Use the .send() method to send a message via Insto.</p>
                 <h4>userQuery</h4>
