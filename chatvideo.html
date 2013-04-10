@@ -1,0 +1,242 @@
+<html>
+	
+	<head>
+		
+		<title>Chat Example</title>
+		
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		<script src="http://api.insto.co.uk:3000/lib/client.js"></script>
+		
+	</head>
+	
+	<style>
+		
+		/* basic reset */
+		* { font-family: 'Arial'; margin: 0; padding: 0; }
+		body { padding: 20px; }
+		ul { list-style: none; }
+		div#container { margin-top: 40px; }
+		
+		/* users list */
+		ul#users {
+			float: left;
+			border: 1px solid grey;
+			width: 150px;
+			height: 300px;
+			overflow: auto;
+		}
+		
+		ul#users li {
+			border-bottom: 1px solid #EDEDED;
+			padding: 5px;
+		}
+		
+		/* chat list */
+		ul#chat-window {
+			float: left;
+			margin-left: 10px;
+			border: 1px solid grey;
+			width: 500px;
+			height: 300px;
+			overflow: auto;
+		}
+		
+		ul#chat-window li {
+			border-bottom: 1px solid #EDEDED;
+			padding: 5px;
+		}
+		
+		ul#chat-window li.connected {
+			color: green;
+		}
+		
+		ul#chat-window li.disconnected {
+			color: red;
+		}
+		
+		ul#chat-window li span {
+			display: inline-block;
+			width: 100px;
+		}
+		
+		/* controls */
+		div#controls {
+			float: left;
+			width: 400px;
+			border: 1px solid grey;
+			margin-left: 10px;
+			padding: 5px;
+		}
+		
+		textarea {
+			width: 350px;
+			height: 100px;
+		}
+		
+		input#send {
+			margin-top: 10px;
+			display: block;
+		}
+		
+	</style>
+	
+	<body>
+		
+		<h1>Chat Demo</h1>
+		<p> A quick example of how to use Insto to make a simple chat system. Enter a name and a message to begin!</p>
+		
+		<div id='container'>
+			
+			<!-- list for our connected users -->
+			<ul id='users'>
+				
+			</ul>
+		
+			<!-- list to display our chat messages -->
+			<ul id='chat-window'>
+				
+			</ul>
+			
+			<!-- div to hold some controls -->
+			<div id='controls'>
+				
+				<h4>Name</h4>
+				<input type='text' id='name' />
+				
+				<h4>Message</h4>
+				<textarea id='message'></textarea>
+				
+				<input type='button' id='send' value='Send' onclick='sendMsg();' />
+				
+			</div>
+			
+		</div>							
+		
+		<script>
+			
+			// global insto variable
+			var insto;
+			
+			// function to send message
+			var sendMsg = function() {
+				
+				// make sure we have a name supplied
+				if ($('#name').val() == "") {
+					alert("Enter a name!");
+					return;
+				}
+				
+				// if this is the first message, setup our insto client
+				if (typeof $('#name').attr('readonly') == 'undefined') {
+					
+					// make name input readonly
+					$('#name').attr('readonly', 'readonly');
+					
+					// define our user data (who we are)
+					var userData = {
+						userType: 'chat',
+						name: $('#name').val()
+					}
+					
+					// define our user query (who we want to know about)
+					var userQuery = {
+						userType: 'chat'
+					}
+					
+					// initialise the InstoClient
+					insto = new InstoClient('98e4bbcec97a36cb591f6d3da62a2754', userData, userQuery, function(data) {
+						
+						/*
+						
+						Callback function
+						- data: contains the received notifications
+						
+						*/
+						
+						// switch based on type of notification
+						switch(data._type) {
+							
+							// on connect
+							case "connected":
+								addUser($('#name').val(), data._id); // add our user to the list
+								sendMsg(); // attempt to resend the message
+								break;
+							
+							// for each user that is connected when we connect
+							case "connectedusers":
+								for (var u in data.users) {
+									addUser(data.users[u].name, data.users[u]._id);
+								}
+								break;
+							
+							// when a new user connects, add to list
+							case "connect":
+								addUser(data.name, data._id);
+								break;
+								
+							// when a user disconnects, add to list
+							case "disconnect":
+								removeUser(data.name, data._id);
+								break;
+							
+							// when a notification is received
+							case "notification":
+								addMessage(data.name, data.msg);
+								break;
+								
+						} 
+						
+						
+					});
+					
+				}
+				
+				// if not the first time, send the message!
+				else {
+					
+					// userQuery: 	Who should receive this notification
+					// message: 		The JSON object we want to send (i.e. the Name of the user, and the message)
+					// sendToSelf: 	Should this message be sent to ourselves
+					insto.send({userType: 'chat'}, { name: $('#name').val(), msg: $('#message').val()}, true);
+					
+					// clear the message box
+					$('#message').val("");
+					
+				}
+				
+				/*****
+					Some helper functions to make
+					things a bit easier for us
+				*****/
+				
+				// function to add user to connected users list
+				var addUser = function(name, id) {
+					
+					$('#users').append("<li id='"+id+"'>"+name+"</li>");
+					$('#chat-window').append("<li class='connected'>* "+name+" has connected</li>");
+					
+				}
+				
+				// function to remove a user from the list
+				var removeUser = function(name, id) {
+					
+					$('#'+id).remove();
+					$('#chat-window').append("<li class='disconnected'>* "+name+" has disconnected</li>");
+					
+				}
+				
+				// function to add message to chat window
+				var addMessage = function(name, message) {
+					
+					$('#chat-window').append("<li><span>"+name+"</span>"+message+"</li>");
+					
+				}
+				
+				
+			}
+			
+		</script>
+		
+	</body>
+	
+</html>
