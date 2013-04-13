@@ -96,7 +96,8 @@ function getChartData($key, $from=false, $to=false) {
 
   // grab URL and pass it to the browser
   $response = json_decode(curl_exec($ch), true);
-  $response = $response['msg'];
+
+  $response = $response['data'];
   $info = curl_getinfo($ch);
 
   // close cURL resource, and free up system resources
@@ -104,12 +105,12 @@ function getChartData($key, $from=false, $to=false) {
 
   // build up graph data
   $data = array(array("Messages", "Messages"));
-	$data[] = array("", 0);
+	//$data[] = array("", 0);
   foreach ($response as $day) {
     $r = array(strval($day['key'][3])."/".strval($day['key'][2]), intval($day['value']));
     $data[] = $r;
   }
-  $data[] = array("", 0);
+  //$data[] = array("", 0);
   
   return $data;
 }
