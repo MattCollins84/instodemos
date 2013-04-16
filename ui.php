@@ -120,14 +120,9 @@
         <div class="row-fluid">
           <div class='span6'>
             <h2>3. Connect to Insto</h2>
-            <p>Set up your connection to Insto, defining your userData, userQuery and a callback function.</p>
-            <p>We will look at the callback function in more detail later.</p>
+            <p>Set up your connection to Insto, defining your userData, userQuery and callback functions.</p>
+            <p>We will look at the callback functions in more detail later.</p>
 <pre class="prettyprint">
-  // callback function
-  var callback = function(data) {
-    // callback functionality
-  }
-  
   // user data
   var userData = {
     userType: "ui",
@@ -140,7 +135,10 @@
   }
   
   //connect to insto
-  i = new InstoClient('api_key', userData, userQuery, callback); 
+  i = new InstoClient('api_key', userData, userQuery, {
+    onConnectedUsers: function(data) { ... },
+    onNotification: function(data) { ... }
+  }); 
 </pre>
             <p>The above says that we are a user with two properties (defined in userData): a 'userType' of 'ui' and a random ID number. This ID number will be used later in the example.</p>
             <p>We are only concerned about users of the same type (userQuery).</p>
@@ -189,23 +187,25 @@
             <p>So someone has changed the colours at their end, now you need to handle the incoming notifications to render the changes at your end.</p>
             <p>This is done in the callback:</p>
 <pre class="prettyprint">
-  // callback function taking one parameter
-  // data - message from insto
-  var callback = function(data) {  
+  //connect to insto
+  i = new InstoClient('api_key', userData, userQuery, {
     
-    // handle messages
-    if (data._type == 'notification') {
+    // sync up with existing users   
+    onConnectedUsers: function(data) { ... },
+    
+    // handle incoming notifications
+    onNotification: function(data) {
       red = data.red;
       green = data.green;
       blue = data.blue;
-      
+
       $('#red').slider('values', red);
       $('#green').slider('values', green);
       $('#blue').slider('values', blue);
-      
+
       render();
     }
-  }
+  });
 </pre>
             <p>Here we are receiving data from another user, telling us what the new values for the sliders should be, and applying these values locally. Notice the use of the render() function we defined earlier.</p>
           </div>
@@ -214,28 +214,14 @@
             <h2>6. Syncing views (pt. 1)</h2>
             <p>At this point you should have a simple application that allows you to change the colours on multiple browsers in real-time.</p>
             <p>But for a truly synchronised experience, we should really make sure that whenever a new user connects, they are immediately caught up with the current view.</p>
-            <p>When a new client connects, Insto automatically sends them all of the connected clients in their userQuery. In this example we asked to be notified of all users with a userType of 'ui'. We can then ask one of these fellow users to send us the current state of play by extending the callback a little:</p>
+            <p>When a new client connects, Insto automatically sends them all of the connected clients in their userQuery. In this example we asked to be notified of all users with a userType of 'ui'.</p>
+            <p>We can then ask one of these fellow users to send us the current state of play by using the <b>onConnectedUsers</b> callback:</p>
 <pre class="prettyprint">
-  // callback function taking one parameter
-  // data - message from insto
-  var callback = function(data) {  
+  //connect to insto
+  i = new InstoClient('api_key', userData, userQuery, {
     
-    // handle messages
-    if (data._type == 'notification') {
-      red = data.red;
-      green = data.green;
-      blue = data.blue;
-      
-      $('#red').slider('values', red);
-      $('#green').slider('values', green);
-      $('#blue').slider('values', blue);
-      
-      render();
-    }
-    
-    // handle connecting
-    if (data._type == 'connectedusers') {
-      
+    // sync up with existing users   
+    onConnectedUsers: function(data) {
       var cu = data.users.length+1;
       $('#connected').html(cu);
       
@@ -244,9 +230,21 @@
         var contextQuery = data.users[0];
         i.send(contextQuery, {context: false, id: userData.id});
       }
-      
+    },
+    
+    // handle incoming notifications
+    onNotification: function(data) {
+      red = data.red;
+      green = data.green;
+      blue = data.blue;
+
+      $('#red').slider('values', red);
+      $('#green').slider('values', green);
+      $('#blue').slider('values', blue);
+
+      render();
     }
-  }
+  });
 </pre>
             <p>Here we are listening for the 'connectedusers' notification, and if we receive any connected users, we send a notification to this user asking for details of the current view.</p>
           </div>
@@ -261,15 +259,25 @@
           <div class='span6'>
             <h2>7. Syncing views (pt. 2)</h2>
             <p>Finally, we need to be able to respond to the request for the latest view, and be able to process this data when it is sent to us.</p>
-            <p>This is done by, as you might have guessed, extending the callback for one final time. The new callback is shown below, and is looked at in more detail in section 8.</p>
+            <p>This is done by extending the callback a bit. The new callback is shown below, and is looked at in more detail in section 8.</p>
 <pre class="prettyprint">
-  // callback function taking one parameter
-  // data - message from insto
-  var callback = function(data) {  
+  //connect to insto
+  i = new InstoClient('api_key', userData, userQuery, {
     
-    // handle messages
-    if (data._type == 'notification') {
+    // sync up with existing users   
+    onConnectedUsers: function(data) {
+      var cu = data.users.length+1;
+      $('#connected').html(cu);
       
+      // get current context
+      if (data.users.length) {
+        var contextQuery = data.users[0];
+        i.send(contextQuery, {context: false, id: userData.id});
+      }
+    },
+    
+    // handle incoming notifications
+    onNotification: function(data) {
       // not a context request?
       if (typeof data.context == 'undefined') {
         red = data.red;
@@ -322,21 +330,9 @@
         }
       }
     }
-    
-    // handle connecting
-    if (data._type == 'connectedusers') {
-      
-      var cu = data.users.length+1;
-      $('#connected').html(cu);
-      
-      // get current context
-      if (data.users.length) {
-        var contextQuery = data.users[0];
-        i.send(contextQuery, {context: false, id: userData.id});
-      }
-    }
-  }
+  });
 </pre>
+
             <p>Here we are receiving data from another user, telling us what the new values for the sliders should be, and applying these values locally. Notice the use of the render() function we defined earlier.</p>
           </div>
           
@@ -345,6 +341,7 @@
             <p>Here is a quick overview of the callback function as a whole.</p>
             <p>This section simply handles the incoming data from another user, and calls the rendering function to make the change on the screen.</p>
 <pre class="prettyprint">
+onNotification: function(data) {
   // not a context request?
   if (typeof data.context == 'undefined') {
     red = data.red;
@@ -402,7 +399,7 @@
             <p>Here we are listening for the 'connectedusers' notification, and if we receive any connected users, we send a notification to this user asking for details of the current view.</p>
 <pre class="prettyprint"> 
 // handle connecting
-if (data._type == 'connectedusers') {
+onConnectedUsers: function(data) {
   
   var cu = data.users.length+1;
   $('#connected').html(cu);
@@ -412,6 +409,7 @@ if (data._type == 'connectedusers') {
     var contextQuery = data.users[0];
     i.send(contextQuery, {context: false, id: userData.id});
   }
+}
 </pre>
               <p>You should now have a fully working application. If not, why not sign-up for free and have a go?</p>
               <p><a href='/signup' class='btn btn-mini btn-success'>Sign-up</a></p>
@@ -466,13 +464,44 @@ if (data._type == 'connectedusers') {
     }
     
     var insto;
-    // callback
-    var callback = function(data) {
-      
-      // handle messages
-      if (data._type == 'notification') {
+    // user data
+    var userData = {
+      userType: "ui",
+      id: Math.random().toString()
+    }
+    
+    // user query
+    var userQuery = {
+      userType: "ui"
+    }
+    
+    //connect to insto
+    insto = new InstoClient('<?=$config['api_key'];?>', userData, userQuery, {
+    	
+    	// on connect
+    	onConnect: function(data) {
+    		$('#connected').html(calculateConnectedUsers(data._id, "in"));
+    	},
+    	
+    	// other connected users
+    	onConnectedUsers: function(data) {
+    		
+    		for (var u in data.users) {
+        	$('#connected').html(calculateConnectedUsers(data.users[u]._id, "in"));
+        }
         
-        // not a context request?
+        // get current context
+        if (data.users.length) {
+          var contextQuery = data.users[0];
+          insto.send(contextQuery, {context: false, id: userData.id});
+        }
+        
+    	},
+    	
+    	// for each notification
+    	onNotification: function(data) {
+    		
+    		// not a context request?
         if (typeof data.context == 'undefined') {
           red = data.red;
           green = data.green;
@@ -522,60 +551,21 @@ if (data._type == 'connectedusers') {
             render();
             
           }
-          
-        }
-      }
-      
-      // handle connection
-      if (data._type == 'connected') {
+      	} 
         
-        $('#connected').html(calculateConnectedUsers(data._id, "in"));
-        
-      }
-      
-      // handle connecting
-      if (data._type == 'connectedusers') {
-        
-        for (var u in data.users) {
-        	$('#connected').html(calculateConnectedUsers(data.users[u]._id, "in"));
-        }
-        
-        // get current context
-        if (data.users.length) {
-          var contextQuery = data.users[0];
-          insto.send(contextQuery, {context: false, id: userData.id});
-        }
-               
-      }
-      
-      // handle others connecting
-      if (data._type == 'connect') {
-        
-        $('#connected').html(calculateConnectedUsers(data._id, "in"));
-        
-      }
-      
-      // handle others disconnecting
-      if (data._type == 'disconnect') {
-        
-        $('#connected').html(calculateConnectedUsers(data._id, "out"));
-        
-      }
-    }
-    
-    // user data
-    var userData = {
-      userType: "ui",
-      id: Math.random().toString()
-    }
-    
-    // user query
-    var userQuery = {
-      userType: "ui"
-    }
-    
-    //connect to insto
-    insto = new InstoClient('<?=$config['api_key'];?>', userData, userQuery, callback <?=($config['insto_host']?", '".$config['insto_host']."'":"");?>);
+    	},
+    	
+    	// when a user connects
+    	onUserConnect: function(data) {
+    		$('#connected').html(calculateConnectedUsers(data._id, "in"));
+    	},
+    	
+    	// when a user disconnects
+    	onUserDisconnect: function(data) {
+  			$('#connected').html(calculateConnectedUsers(data._id, "out"));
+    	}
+    	
+    }<?=($config['insto_host']?", '".$config['insto_host']."'":"");?>);
   
   </script>
   

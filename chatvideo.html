@@ -5,7 +5,7 @@
 		<title>Chat Example</title>
 		
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-		<script src="http://api.insto.co.uk:3000/lib/client.js"></script>
+		<script src="http://localhost:3000/lib/client.js"></script>
 		
 	</head>
 	
@@ -144,51 +144,38 @@
 					}
 					
 					// initialise the InstoClient
-					insto = new InstoClient('98e4bbcec97a36cb591f6d3da62a2754', userData, userQuery, function(data) {
-						
-						/*
-						
-						Callback function.
-						This will handle all of the notifications received from the Insto server
-						- data: contains the received notifications
-						
-						*/
-						
-						// switch based on type of notification
-						switch(data._type) {
+					insto = new InstoClient('98e4bbcec97a36cb591f6d3da62a2754', userData, userQuery, {
 							
-							// on connect
-							case "connected":
-								addUser($('#name').val(), data._id); // add our user to the list
-								sendMsg(); // attempt to resend the message
-								break;
-							
-							// for each user that is connected when we connect
-							case "connectedusers":
-								for (var u in data.users) {
-									addUser(data.users[u].name, data.users[u]._id);
-								}
-								break;
-							
-							// when a new user connects, add to list
-							case "connect":
-								addUser(data.name, data._id);
-								break;
-								
-							// when a user disconnects, add to list
-							case "disconnect":
-								removeUser(data.name, data._id);
-								break;
-							
-							// when a notification is received
-							case "notification":
-								addMessage(data.name, data.msg);
-								break;
-								
-						} 
+						// when we conncet
+						onConnect: function(data) {
+							addUser($('#name').val(), data._id); // add our user to the list
+							sendMsg(); // attempt to resend the message
+						},
 						
+						// for each user that is connected when we connect
+						onConnectedUsers: function(data) {
+							for (var u in data.users) {
+								addUser(data.users[u].name, data.users[u]._id);
+							}
+						},
 						
-					});
+						// when another user connects
+						onUserConnect: function(data) {
+							addUser(data.name, data._id);
+							$('#chat-window').append("<li class='connected'>* "+data.name+" has connected</li>");
+						},
+						
+						// when another user disconnects
+						onUserDisconnect: function(data) {
+							removeUser(data.name, data._id);
+						},
+						
+						// when a message is received
+						onNotification: function(data) {
+							addMessage(data.name, data.msg);
+						}
+						
+					}, "http://localhost:3000");
 					
 				}
 				
@@ -214,7 +201,6 @@
 				var addUser = function(name, id) {
 					
 					$('#users').append("<li id='"+id+"'>"+name+"</li>");
-					$('#chat-window').append("<li class='connected'>* "+name+" has connected</li>");
 					
 				}
 				

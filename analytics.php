@@ -78,13 +78,8 @@
           <div class='span6'>
             <h2>3. Connect to Insto</h2>
             <p>Set up your connection to Insto, defining your userData, userQuery and a callback function. Notice how we are using the BrowserDetect script to determine the name of the browser being used.</p>
-            <p>We will look at the callback function in more detail later.</p>
+            <p>We will look at the callback functions in more detail later.</p>
 <pre class="prettyprint">
-  // callback function
-  var callback = function(data) {
-    // callback functionality
-  }
-  
   // user data
   var userData = {
     userType: "analytics",
@@ -97,7 +92,14 @@
   }
   
   //connect to insto
-  i = new InstoClient('api_key', userData, userQuery, callback); 
+  i = new InstoClient('api_key', userData, userQuery, {
+    
+    onConnect: function(data) { ... },
+    onConnectedUsers: function(data) { ... },
+    onUserConnect: function(data) { ... },
+    onUserDisconnect: function(data) { ... }
+    
+  }); 
 </pre>
             
           </div>
@@ -154,36 +156,33 @@ updateChart(BrowserDetect.browser, 1);
       
       <div class="row-fluid">
           <div class='span6'>
-            <h2>5. Setup our callback</h2>
-            <p>Earlier, we setup a callback function, to handle all of our notifications from Insto, now we need to make it do something.</p>
+            <h2>5. Setup our callbacks</h2>
+            <p>Earlier, we setup a few callback functions, to handle all of our notifications from Insto, now we need to make it do something.</p>
 
 <pre class="prettyprint">
 
-// callback
-var callback = function(data) {
-
-  switch (data._type) {
+//connect to insto
+i = new InstoClient('api_key', userData, userQuery, {
 	
-    case "connectedusers":
-      connectedUsers(data);
-      break;
+  // call some utility functions whenever we get some notifications
+  // about other connected users, and whenever a user connects 
+  // or disconnects
+  onConnectedUsers: function(data) {
+    connectedUsers(data);
+  },
+  
+  onUserConnect: function(data) {
+    userConnect(data);
+  },
 	
-    case "connect":
-      userConnect(data);
-      break;
-	
-    case "disconnect":
-      userDisconnect(data)
-      break;
-	
-    default:
-      break;
+  onUserDisconnect: function(data) {
+    userDisconnect(data);
   }
-
-}
+	
+});
 
 </pre>
-						<p>A simple switch() on the incoming notifications helps to 'direct traffic' to where its needed, each of these functions helping to redraw the graph as needed.</p>
+						<p>These utility functions are shown in the next step, and help to redraw the chart as required.</p>
           </div>
           
           <div class='span6'>
@@ -244,73 +243,6 @@ var userDisconnect = function(data) {
 		<script type='text/javascript' src='/js/browserdetect.js'></script>
 		<script type='text/javascript'>
 
-			// callback
-			var callback = function(data) {
-				
-				//console.log(data);
-				
-				switch (data._type) {
-				
-					case "connected":
-						connected(data);
-						break;
-				
-					case "connectedusers":
-						connectedUsers(data);
-						break;
-				
-					case "connect":
-						userConnect(data);
-						break;
-				
-					case "disconnect":
-						userDisconnect(data)
-						break;
-				
-					default:
-						break;
-				}
-			
-			
-			
-			}
-			
-			// handle connection
-			var connected = function(data) {
-				$('#connected').html(calculateConnectedUsers(data._id, "in"));
-			}
-			
-			// handle connected users
-			var connectedUsers = function(data) {
-			
-				for (var u in data.users) {
-        	$('#connected').html(calculateConnectedUsers(data.users[u]._id, "in"));
-        }
-			
-				for (var u in data.users) {
-					updateChart(data.users[u].browser, 1);
-				}
-						 
-			}
-		
-			// handle others connecting
-			var userConnect = function(data) {
-			
-				$('#connected').html(calculateConnectedUsers(data._id, "in"));
-			
-				updateChart(data.browser, 1);
-			
-			}
-		
-			// handle others disconnecting
-			var userDisconnect = function(data) {
-			
-				$('#connected').html(calculateConnectedUsers(data._id, "out"));
-			
-				updateChart(data.browser, -1);
-			
-			}
-		
 			var chartData = [
 				['Browser', 'Number']
 			];
@@ -359,7 +291,38 @@ var userDisconnect = function(data) {
 			}
 		
 			//connect to insto
-			insto = new InstoClient('<?=$config['api_key'];?>', userData, userQuery, callback <?=($config['insto_host']?", '".$config['insto_host']."'":"");?>);
+			insto = new InstoClient('<?=$config['api_key'];?>', userData, userQuery, {
+				
+				// on connect
+				onConnect: function(data) {
+					$('#connected').html(calculateConnectedUsers(data._id, "in"));
+				},
+				
+				// connected users
+				onConnectedUsers: function(data) {
+					for (var u in data.users) {
+						$('#connected').html(calculateConnectedUsers(data.users[u]._id, "in"));
+					}
+			
+					for (var u in data.users) {
+						updateChart(data.users[u].browser, 1);
+					}
+				},
+				
+				onUserConnect: function(data) {
+					
+					$('#connected').html(calculateConnectedUsers(data._id, "in"));
+			
+					updateChart(data.browser, 1);
+				},
+				
+				onUserDisconnect: function(data) {
+					
+					$('#connected').html(calculateConnectedUsers(data._id, "out"));
+			
+					updateChart(data.browser, -1);
+				}
+			}<?=($config['insto_host']?", '".$config['insto_host']."'":"");?>);
 	
 		</script>
   

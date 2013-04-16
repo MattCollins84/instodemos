@@ -50,9 +50,12 @@ require_once("includes/config.php");
 				userType: "tweeter"
 			}
 			
-			var callback = function(data) {
-				console.log(data);
-				if (data._type == 'notification') {
+			//connect to insto
+			insto = new InstoClient('98e4bbcec97a36cb591f6d3da62a2754', userData, userQuery, {
+				
+				// for a notification
+				onNotification: function(data) {
+					
 					tweet();
 					
 					var li = "<li><div class='tweet_id'><img class='tweet_logo' src='"+data.logo+"' /><h1>"+data.name+"<br /><span>@"+data.username+"</span></h1></div><p>"+data.text+"</p></li>";
@@ -61,10 +64,8 @@ require_once("includes/config.php");
 					tweets.push(data);
 					
 				}
-			}
-		
-			//connect to insto
-			insto = new InstoClient('98e4bbcec97a36cb591f6d3da62a2754', userData, userQuery, callback , '<?=($config['insto_host']?$config['insto_host']:"http://api.insto.co.uk:3000");?>');
+				
+			}<?=($config['insto_host']?", '".$config['insto_host']."'":"");?>);
   	</script>
   </body>
 </html>

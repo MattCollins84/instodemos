@@ -120,14 +120,9 @@ echo htmlentities("<form>
         <div class="row-fluid">
           <div class='span6'>
             <h2>3. Connect to Insto</h2>
-            <p>Set up your connection to Insto, defining your userData, userQuery and a callback function.</p>
-            <p>We will look at the callback function in more detail later.</p>
+            <p>Set up your connection to Insto, defining your userData, userQuery and your callback functions.</p>
+            <p>We will look at the callback functions in more detail later.</p>
 <pre class="prettyprint">
-  // callback function
-  var callback = function(data) {
-    // callback functionality
-  }
-  
   // user data
   var userData = {
     userType: "chat"
@@ -139,25 +134,26 @@ echo htmlentities("<form>
   }
   
   //connect to insto
-  i = new InstoClient('api_key', userData, userQuery, callback); 
+  i = new InstoClient('api_key', userData, userQuery, {
+    onNotification: function(data) { ... }
+  }); 
 </pre>
             <p>The above says that we are a user with one property (defined in userData): a 'userType' of 'chat'. And we are only concerned about users of the same type (userQuery).</p>
+          	<p>It also shows that some action will be performed whenever a notification is received, which will be covered in the next step!</p>
           </div>
           
           <div class='span6'>
-            <h2>4. Create a callback function</h2>
-            <p>The callback function is what will handle all incoming messages from Insto.</p>
-            <p>We are listening to incoming messages from Insto, and if they are of type 'notification' we then render some HTML into the #chatlist element we defined earlier.</p>
+            <h2>4. Create the callback function</h2>
+            <p>The onNotification callback function is what will handle all incoming messages from other Insto users.</p>
+            <p>Every time we receive one of these notifications we will render some HTML into the #chatlist element we defined earlier.</p>
 <pre class="prettyprint">
-  // callback function taking one parameter
-  // data - message from insto
-  var callback = function(data) {
-    // handle incoming messages
-    if (data._type == 'notification') {
+  //connect to insto
+  i = new InstoClient('api_key', userData, userQuery, {
+    onNotification: function(data) {
       var li = "<? echo htmlentities("<li><span class='mr'>"); ?>"+data.name+"<? echo htmlentities("</span>"); ?>"+data.msg+"<? echo htmlentities("</li>"); ?>";
-      $('#chatlist').append(li);
+      $('#chatlist').append(li);      
     }
-  }
+  });
 </pre>
             <p>This could be taken further to handle the connection/disconnection of users like in our demo, but for the purposes of this explanation we will leave that out. More information can be found in the <a href='/docs'>docs</a>.</p>
           </div>
@@ -210,48 +206,6 @@ echo htmlentities("<form>
   <script type='text/javascript'>
     
     var insto;
-    // callback
-    var callback = function(data) {
-      console.log(data);
-      
-      // handle connection
-      if (data._type == 'connected') {
-        
-        $('#connected').html(calculateConnectedUsers(data._id, "in"));
-        
-      }
-      
-      // handle messages
-      if (data._type == 'notification') {
-        
-        var li = "<li><span class='mr'>"+data.name+"</span>"+data.msg+"</li>";
-        $('#chatlist').append(li);
-        
-      }
-      
-      // handle connecting
-      if (data._type == 'connectedusers') {
-        
-        for (var u in data.users) {
-        	$('#connected').html(calculateConnectedUsers(data.users[u]._id, "in"));
-        }
-        
-      }
-      
-      // handle others connecting
-      if (data._type == 'connect') {
-        
-        $('#connected').html(calculateConnectedUsers(data._id, "in"));
-        
-      }
-      
-      // handle others disconnecting
-      if (data._type == 'disconnect') {
-        
-        $('#connected').html(calculateConnectedUsers(data._id, "out"));
-        
-      }
-    }
     
     // user data
     var userData = {
@@ -264,7 +218,37 @@ echo htmlentities("<form>
     }
     
     //connect to insto
-    insto = new InstoClient('<?=$config['api_key'];?>', userData, userQuery, callback<?=($config['insto_host']?", '".$config['insto_host']."'":"");?>);
+    insto = new InstoClient('<?=$config['api_key'];?>', userData, userQuery, {
+    	
+    	// when connect
+    	onConnect: function(data) {
+    		$('#connected').html(calculateConnectedUsers(data._id, "in"));
+    	},
+    	
+    	// connected users
+    	onConnectedUsers: function(data) {
+    		for (var u in data.users) {
+        	$('#connected').html(calculateConnectedUsers(data.users[u]._id, "in"));
+        }
+    	},
+    	
+    	// for each notification
+    	onNotification: function(data) {
+    		var li = "<li><span class='mr'>"+data.name+"</span>"+data.msg+"</li>";
+        $('#chatlist').append(li);
+    	},
+    	
+    	// user connect
+    	onUserConnect: function(data) {
+    		$('#connected').html(calculateConnectedUsers(data._id, "in"));
+    	},
+    	
+    	// user disconnect
+    	onUserDisconnect: function(data) {
+    		$('#connected').html(calculateConnectedUsers(data._id, "out"));
+    	}
+    	
+    }<?=($config['insto_host']?", '".$config['insto_host']."'":"");?>);
       
     var sendMessage = function() {
       

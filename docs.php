@@ -71,13 +71,17 @@ var userQuery = {
   userType: "example"
 }
 
-// callback
-var callback = function(data) {
-  console.log(data);
-}
-
 //connect to insto
-i = new InstoClient('API_KEY', userData, userQuery, callback);
+i = new InstoClient('API_KEY', userData, userQuery, {
+	
+  onConnect: function(data) { ... },
+  onConnectedUsers: function(data) { ... },
+  onNotification: function(data) { ... },
+  onQuery: function(data) { ... },
+  onUserConnect: function(data) { ... },
+  onUserDisconnect: function(data) { ... }
+	
+});
 </pre>
 
                 <p>Lets quickly run through what the above is doing...</p>
@@ -98,41 +102,18 @@ var userData = {
                 <p>Again, there is no schema associated with this object and it can be created in an identical manner to the userData.</p>
                 
                 
-                <h4>callback</h4>
-                <p>The callback function will receive all messages that are sent to your InstoClient, and is the key to your implementation. It is a Javascript function that takes one parameter, which contains the received message.</p>
-                <p>The received notification will take the form of whatever message was sent, and as such it is expected that the application understands the format it will receive the data and the field names that make up the message.</p>
-                <p>All received notification will contain a <b>_type</b> property, signalling what type of notification this is whilst an "_id" property will show the unique ID of the sending user.</p>
-                <p>All users that are returned via queries or connection/disconnection notifications will also contain an <b>_id</b> property, which is the unique ID for this user.</p>
-                
-<pre class='prettyprint'>
-// Example of a notification
-{
-  _type: "notification",
-  _id: "jdshf-8347jdf45",
-  message: "this is a test notification",
-  sender_name: "Matt"
-}
-</pre>
-								
-								<h4>Connection</h4>
-								<p>Once connected, a notification with a _type of 'connected' and an _id showing the unique ID for this user will be returned via the callback function.</p>
+                <h4>Callback options</h4>
+                <p>There are a number of options available to help you deal with any incoming notifications, and they are accessible via the callback options parameter. These are all functions that accept one parameter which contains the notification data.</p>
+                <ul>
+                	<li><b>onConnect:</b> this is fired when you connect to the server and contains your unique ID</li>
+                	<li><b>onConnectedUsers:</b> this contains all of the other connected users that match your userQuery</li>
+                	<li><b>onNotification:</b> fired whenever a notification is received from another connected user</li>
+                	<li><b>onQuery:</b> contains the results of a query API call</li>
+                	<li><b>onUserConnect:</b> fired whenever a new user connects, and contains their userData</li>
+                	<li><b>onUserDisconnect:</b> fired whenever a new user disconnects, and contains their userData</li>
+                	
+                </ul>
 
-<pre class='prettyprint'>
-// example 'connected' notification
-{
-  _type: "connected",
-  _id: "34534-sdf245fgdfg"
-}
-</pre>
-								
-                <h4>InstoClient</h4>
-                <p>Finally, we need to combine the above to actually connect to the Insto service.</p>
-                <p>The InstoClient class is used to connect, and all received notifications are relayed through it to the callback function supplied.</p>
-                
-<pre class='prettyprint'>
-// connect to insto
-i = new InstoClient('API_KEY', userData, userQuery, callback);
-</pre>
               </div>
               
               <div>
@@ -140,49 +121,21 @@ i = new InstoClient('API_KEY', userData, userQuery, callback);
                 <p>The Websocket API is used to send and receive notifications between connected clients in real-time.</p>
                 
                 <h3 id='_ws_notifications'>Notifications</h3>
-                <p>Notifications can be sent and received by any connected InstoClient, and when they are received they are passed to the callback function for the developer to handle as required.</p>
-                <p>There are six types of notification, shown below.</p>
+                <p>Notifications can be sent and received by any connected InstoClient, and when they are received they are passed to the appropriate callback function for the developer to handle as required.</p>
+                <p>There are six types of notification, with the related callback shown below.</p>
 								
-								<h4>Connected</h4>
-								<p><b>_type</b>: connected</p>
-								<p>Received when an InstoClient has successfully connected to the Insto server</p>
+								<h4>onConnect</h4>
+								<p>Fired when an InstoClient has successfully connected to the Insto server</p>
 <pre class='prettyprint'>
 {
-  _type: "connected",
   _id: "kjghdfgosdkfj-65"
 }
 </pre>
-								
-								<h4>Connect</h4>
-								<p><b>_type</b>: connect</p>
-								<p>Received when another Insto client connects to the server and matches the supplied userQuery. Provides this clients userData object.</p>
-<pre class='prettyprint'>
-{
-  _type: "connect",
-  _id: "hhgjjudnySDF-34",
-  name: "John Smith",
-  department: "sales"
-}
-</pre>
 
-								<h4>Disconnect</h4>
-								<p><b>_type</b>: disconnect</p>
-								<p>Received when another Insto client disconnects from the server and matches the supplied userQuery. Provides this clients userData object.</p>
+								<h4>onConnectedUsers</h4>
+								<p>Fired after connection if any currently connected Insto clients match the supplied userQuery. Provides an array of matching clients userData objects.</p>
 <pre class='prettyprint'>
 {
-  _type: "disconnect",
-  _id: "hhgjjudnySDF-34",
-  name: "John Smith",
-  department: "sales"
-}
-</pre>
-
-								<h4>Connected Users</h4>
-								<p><b>_type</b>: connectedusers</p>
-								<p>Received after connection if any currently connected Insto clients match the supplied userQuery. Provides an array of matching clients userData objects.</p>
-<pre class='prettyprint'>
-{
-  _type: "connectedusers",
   users: [
     {
       _id: "hhgjjudnySDF-34",
@@ -198,14 +151,12 @@ i = new InstoClient('API_KEY', userData, userQuery, callback);
 }
 </pre>
 								
-								<h4>Notification</h4>
-								<p><b>_type</b>: notification</p>
-								<p>Received every time an InstoClient receives a notification from another InstoClient, either via a broadcast message or matching a userQuery on a direct message.</p>
+								<h4>onNotification</h4>
+								<p>Fired every time an InstoClient receives a notification from another InstoClient, either via a broadcast message or matching a userQuery on a direct message.</p>
 <pre class='prettyprint'>
 insto.send({department: "sales"}, { foo: "Bar" }); // send notification to all users in the sales department
 
 {
-  _type: "notification",
   _id: "ksjhdfjkksdf-45", //the unique ID of the sender
   foo: "bar"
 }
@@ -213,20 +164,37 @@ insto.send({department: "sales"}, { foo: "Bar" }); // send notification to all u
 insto.broadcast({ hello: "World" }); //send notification to ALL connected users
 
 {
-  _type: "notification",
   _id: "ksjhdfjkksdf-45", //the unique ID of the sender
   hello: "World"
 }
 </pre>
+								
+								<h4>onUserConnect</h4>
+								<p>Fired when another Insto client connects to the server and matches the supplied userQuery. Provides this clients userData object.</p>
+<pre class='prettyprint'>
+{
+  _id: "hhgjjudnySDF-34",
+  name: "John Smith",
+  department: "sales"
+}
+</pre>
+
+								<h4>onUserDisconnect</h4>
+								<p>Fired when another Insto client disconnects from the server and matches the supplied userQuery. Provides this clients userData object.</p>
+<pre class='prettyprint'>
+{
+  _id: "hhgjjudnySDF-34",
+  name: "John Smith",
+  department: "sales"
+}
+</pre>
 
 								<h4>Query</h4>
-								<p><b>_type</b>: query</p>
-								<p>Received as a response from the query method (insto.query()). Provides an array of other connected users that match the supplied query.</p>
+								<p>Fired as a response from the query method (insto.query()). Provides an array of other connected users that match the supplied query.</p>
 <pre class='prettyprint'>
 insto.query({department: "sales"}); // find all connected users in the sales department
 
 {
-  _type: "query",
   users: [
     {
       _id: "hhgjjudnySDF-34",
