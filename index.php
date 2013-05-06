@@ -54,20 +54,21 @@
 
             <div class="span8">
               <h3>Show me.</h3>
-              <p>Simply include our Javascript library, define your user and connect! You are now ready to use Insto.</p>
-              
- <pre class="prettyprint">
-&lt;script type="text/javascript" src="http://api.insto.co.uk:3000/lib/client.js"&gt;&lt;/script&gt;
-&lt;script type="text/javascript"&gt;
-  // Define a user
-  var user = { user_id: 123, name: "John Smith", office: "London" };
-  // Connect
-  var insto = new InstoClient('api_key', user, query, callback);
-  // Send a notification to everyone in the Manchester office
-  insto.send({ office: "Manchester" }, { foo: "bar" });
-&lt;/script&gt;
-</pre>             
-              
+              <p>Simply include our Javascript library, define your user and connect! You are now ready to use Insto, check out some of our demos below.</p>
+              <table class='table table-bordered table-striped'>
+              	<tr>
+              		<td><a href='/chat'>Chat</a></td>
+              		<td>The quintessential real-time system. Get your first taste of Insto here.</td>
+              	</tr>
+              	<tr>
+              		<td><a href='/analytics'>Analytics</a></td>
+              		<td>Use Insto to monitor the users on your site, here we track what browser each user is using in real-time.</td>
+              	</tr>
+              	<tr>
+              		<td><a href='/ui'>UI Sync</a></td>
+              		<td>Synchronise a shared UI between all of your users.</td>
+              	</tr>
+              </table>
             </div>
 
           </div> 
