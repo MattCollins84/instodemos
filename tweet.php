@@ -25,7 +25,7 @@ require_once("includes/config.php");
   <body>
   	
   	<div id='header'>
-  		<h1>Tweet about Insto and see what happens...</h1>
+  		<h1>Tweet about #ExpoTees and see what happens...</h1>
   	</div>
   	
   	<div id="container">

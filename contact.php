@@ -5,16 +5,13 @@
   
   if (isset($_POST['email']) && $_POST['email']) {
   	
-  	if ($_SESSION['user']) {
   		
-  		$_POST['question'] .= "\n\n";
-  		$_POST['question'] .= print_r($_SESSION['user'], true);
+  	$_POST['question'] .= "\n\n";
+  	$_POST['question'] .= print_r(($_SESSION['user']?$_SESSION['user']:$_POST), true);
   		
-  		$headers = 'From: ' . $_POST['email'] . "\r\n" .
+  	$headers = 'From: ' . $_POST['email'] . "\r\n" .
     'Reply-To: ' . $_POST['email'] . "\r\n" .
     'X-Mailer: PHP/' . phpversion();
-  		
-  	}
   	
   	if(mail("support@insto.co.uk", $_POST['subject'], $_POST['question'], $headers)) {
   		$mailSent = true;

@@ -46,7 +46,7 @@
           
           <div class="row-fluid"> 
             <div class="span4">
-              <h3>Why should you care?</h3>
+              <h3>Why should I care?</h3>
               <p>We believe that developers should be concentrating on creating exciting applications, not managing complicated systems or infrastructure.</p>
               <p>Aside from being <b>powerful</b>, <b>flexible</b> and a <b>very simple</b> way to implement real-time functionality into your application, Insto is also extremely scalable.</p>
               <p>And because we handle all the heavy lifting and logistics, you don't have to worry about anything and can be up and running in minutes.</p>

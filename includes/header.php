@@ -24,9 +24,9 @@ require_once('includes/config.php');
     <script src="/js/custom.js"></script>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
 
-		<script type="text/javascript">var switchTo5x=true;</script>
+		<!--<script type="text/javascript">var switchTo5x=true;</script>
 		<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
-		<script type="text/javascript" src="http://s.sharethis.com/loader.js"></script>
+		<script type="text/javascript" src="http://s.sharethis.com/loader.js"></script>-->
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
