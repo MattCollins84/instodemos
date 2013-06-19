@@ -21,7 +21,7 @@ curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
 // grab URL and pass it to the browser
 $response = json_decode(curl_exec($ch), true);
-$response = $response['msg'];
+$response = $response['data'];
 $info = curl_getinfo($ch);
 
 // close cURL resource, and free up system resources
