@@ -89,7 +89,7 @@
                 
                 <div class="form-actions">
                   <button type="submit" class="btn btn-primary">Send Message</button>
-                  <input class='mb' type='hidden' name='instohost' id='instohost' value='<?=($config['insto_host']?$config['insto_host']:"http://api.insto.co.uk:3000");?>' />
+                  <input class='mb' type='hidden' name='instohost' id='instohost' value='<?=($config['insto_host']?$config['insto_host']:"https://api.insto.co.uk:3000");?>' />
                 	<? if ($_SESSION['user']) { ?>
                 	<p class='mt'>Your user details will be sent along with the information you supply above.</p>
                 	<? } ?>

@@ -18,7 +18,7 @@ require_once("includes/config.php");
 		
 		<script type="text/paperscript" canvas="canvas" src="/js/dandelion.pjs" id="script"></script>
 		
-    <script type="text/javascript" src="<?=($config['insto_host']?$config['insto_host']:"http://api.insto.co.uk:3000");?>/lib/client.js"></script>
+    <script type="text/javascript" src="<?=($config['insto_host']?$config['insto_host']:"https://api.insto.co.uk:3000");?>/lib/client.js"></script>
 
   </head>
 

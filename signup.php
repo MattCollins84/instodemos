@@ -84,7 +84,7 @@
                 
                 <div class="form-actions">
                   <button type="button" onclick='signup();' class="btn btn-primary">Sign-up!</button>
-                  <input type='hidden' name='instohost' id='instohost' value='<?=($config['insto_host']?$config['insto_host']:"http://api.insto.co.uk:3000");?>' />
+                  <input type='hidden' name='instohost' id='instohost' value='<?=($config['insto_host']?$config['insto_host']:"https://api.insto.co.uk:3000");?>' />
                 </div>
               </form>
             

@@ -49,7 +49,7 @@
                 <p>Configuring your application to use Insto is really simple. Just add the Insto Javascript API shown below into the &lt;head&gt; section of your HTML.</p>
                 
 <pre class='prettyprint'>
-&lt;script type="text/javascript" src="http://api.insto.co.uk:3000/lib/client.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="https://api.insto.co.uk:3000/lib/client.js"&gt;&lt;/script&gt;
 </pre>
 
                 <p>The first line sets up the <a href='http://socket.io'>Socket.IO</a> library, which is used to help make our Websocket implementation backwards compatible, whilst the second line loads the Insto client library, which creates a wrapper around our Websocket API.</p>
@@ -295,14 +295,14 @@ i.query(userQuery);
                 <h3>Send</h3>
                 <p>The RESTful API allows messages to be sent to connected users that match a certain parameter, the URL structure is as shown:</p>
 <pre class='prettyprint'>
-<?=($config['insto_host']?$config['insto_host']:"http://api.insto.co.uk:3000");?>/&lt;API_KEY&gt;/message/to/&lt;PARAMETER&gt;/&lt;VALUE&gt;?param1=value1&amp;paramN=valueN
+<?=($config['insto_host']?$config['insto_host']:"https://api.insto.co.uk:3000");?>/&lt;API_KEY&gt;/message/to/&lt;PARAMETER&gt;/&lt;VALUE&gt;?param1=value1&amp;paramN=valueN
 </pre>
 
                 <p>Responses are in JSON format, consisting of a success boolean parameter.</p>
                 
                 <h4>Example</h4>
 <pre class='prettyprint'>
-<?=($config['insto_host']?$config['insto_host']:"http://api.insto.co.uk:3000");?>/&lt;API_KEY&gt;/message/to/userId/1234?message=hi&amp;sender=Matt
+<?=($config['insto_host']?$config['insto_host']:"https://api.insto.co.uk:3000");?>/&lt;API_KEY&gt;/message/to/userId/1234?message=hi&amp;sender=Matt
 
 {
   success: true
@@ -314,14 +314,14 @@ i.query(userQuery);
                 <h3>Broadcast</h3>
                 <p>The RESTful API allows messages to be sent to all connected users.</p>
 <pre class='prettyprint'>
-<?=($config['insto_host']?$config['insto_host']:"http://api.insto.co.uk:3000");?>/&lt;API_KEY&gt;/message/all?param1=value1&amp;paramN=valueN
+<?=($config['insto_host']?$config['insto_host']:"https://api.insto.co.uk:3000");?>/&lt;API_KEY&gt;/message/all?param1=value1&amp;paramN=valueN
 </pre>
 
                 <p>Responses are in JSON format, consisting of a success boolean parameter.</p>
                 
                 <h4>Example</h4>
 <pre class='prettyprint'>
-<?=($config['insto_host']?$config['insto_host']:"http://api.insto.co.uk:3000");?>/&lt;API_KEY&gt;/message/all?message=hi&amp;sender=Matt
+<?=($config['insto_host']?$config['insto_host']:"https://api.insto.co.uk:3000");?>/&lt;API_KEY&gt;/message/all?message=hi&amp;sender=Matt
 
 {
   success: true
@@ -333,14 +333,14 @@ i.query(userQuery);
                 <h3>Query</h3>
                 <p>The RESTful API allows users to search for connected users.</p>
 <pre class='prettyprint'>
-<?=($config['insto_host']?$config['insto_host']:"http://api.insto.co.uk:3000");?>/&lt;API_KEY&gt;/query?param1=value1&amp;paramN=valueN
+<?=($config['insto_host']?$config['insto_host']:"https://api.insto.co.uk:3000");?>/&lt;API_KEY&gt;/query?param1=value1&amp;paramN=valueN
 </pre>
 
                 <p>Responses are in JSON format, consisting of a success boolean parameter and an array of matched users.</p>
                 
                 <h4>Example</h4>
 <pre class='prettyprint'>
-<?=($config['insto_host']?$config['insto_host']:"http://api.insto.co.uk:3000");?>/&lt;API_KEY&gt;/query?userType=chat
+<?=($config['insto_host']?$config['insto_host']:"https://api.insto.co.uk:3000");?>/&lt;API_KEY&gt;/query?userType=chat
 
 {
   "msg": [
