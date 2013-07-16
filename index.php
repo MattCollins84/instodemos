@@ -26,7 +26,7 @@
             <div class="span4">
               <h3>What is it?</h3>
               <p>Insto is an API designed to bring the <em>realtime web</em> to your application, in the simplest way possible.</p>
-              <p>Our Javascript and REST APIs let you add <strong>scalable realtime functionality within minutes</strong>, without any of the hassle.</p>
+              <p>Our SSL secured Javascript and REST APIs let you add <strong>scalable and secure realtime functionality within minutes</strong>, without any of the hassle.</p>
             </div>
 
             <div class="span4">
