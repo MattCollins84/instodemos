@@ -5,11 +5,9 @@ require_once('includes/config.php');
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>&raquo; Insto - <?=((isset($title) && $title)?$title:"Real-time, Real-easy");?></title>
+    <title>Real-time, Real-easy with Insto Javascript API | <?=((isset($title) && $title)?$title:"")?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Insto is an API designed to bring the real-time web to your application, in the simplest way possible. Our Javascript library and REST API lets you add scalable real-time functionality within minutes, without any of the hassle.">
-    <meta name="keywords" content="realtime, real time, real-time, real time web, realtime web, websockets, web socket, cloud, cloud based, real time statistics, real time framework, framework, web development, developers, api, nodejs, node js, push notifications">
-    <meta name="author" content="">
+    <meta name="description" content="Insto brings the real-time web to your application. Our APIs let you add scalable real-time functionality to your project within minutes, hassle free.">
 
     <!-- Le styles -->
     <link href="/css/bootstrap.css" rel="stylesheet">
@@ -17,6 +15,8 @@ require_once('includes/config.php');
     <link href="/css/custom.css" rel="stylesheet">
     <link href="/css/prettify.css" rel="stylesheet">
     <link href="/css/jqueryui.css" rel="stylesheet">
+    
+    <link rel="canonical" href="http://www.insto.co.uk" />
     
    	<script src="/js/jquery.js"></script>
     <script src="/js/jqueryui.js"></script>
@@ -82,7 +82,7 @@ require_once('includes/config.php');
             </a>
 
 
-            <a class='brand' href="/"><img src="/img/top_logo.png" alt="" /></a>                            
+            <a class='brand' href="/"><img src="/img/real-time-insto.png" alt="Real-time applications with Insto" /></a>                            
     
             <div class="nav-collapse">
                 <ul class="nav pull-right">

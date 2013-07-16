@@ -1,5 +1,9 @@
 RewriteEngine on
 
+RewriteRule ^$ /real-time [R=301,L]
+
+RewriteRule ^real-time/?$ /index.php [L]
+
 RewriteRule ^demos/?$ /demos.php [L]
 RewriteRule ^docs/?$ /docs.php [L]
 RewriteRule ^chat/?$ /chat.php [L]

@@ -25,20 +25,20 @@
           <div class="row-fluid"> 
             <div class="span4">
               <h3>What is it?</h3>
-              <p>Insto is an API designed to bring the real-time web to your application, in the simplest way possible.</p>
-              <p>Our Javascript library and REST API lets you add scalable real-time functionality within minutes, without any of the hassle.</p>
+              <p>Insto is an API designed to bring the <em>real-time web</em> to your application, in the simplest way possible.</p>
+              <p>Our Javascript and REST APIs let you add <strong>scalable real-time functionality within minutes</strong>, without any of the hassle.</p>
             </div>
 
             <div class="span4">
               <h3>How does it work?</h3>
-              <p>Insto utilises a combination of <a href='http://www.websocket.org/' target='_blank'>HTML5 Websockets</a> and <a href='http://nodejs.org' target='_blank'>Node.JS</a> to make the real-time communication possible, with our Javascript library providing compatibility all the way back to Internet Explorer 6.</p>
+              <p>Insto utilises a combination of <a href='http://www.websocket.org/' target='_blank'>HTML5 Websockets</a> and <a href='http://nodejs.org' target='_blank'>Node.JS</a> to make the real-time communication possible, with our <strong>Javascript API</strong> providing compatibility all the way back to Internet Explorer 6.</p>
               <p>However, as Insto is a hosted service you don't need to worry about any of this and instead can focus on creating amazing applications.</p>
               
             </div>
 
             <div class="span4">
               <h3>What can I do?</h3>
-              <p>The purpose of Insto is to give you the power to add real-time functionality to your applications.</p>
+              <p>The short answer is, anything you want! The purpose of Insto is to give you the power to <em>add real-time functionality to your applications</em> in whatever way you see fit.</p>
               <p>Whether this means updating graphs and charts in real-time, connecting users in an online game, creating presentation software, pushing high quality leads to your sales team or simply creating a chat service... Insto can do it.</p>
             </div>
 
@@ -48,13 +48,13 @@
             <div class="span4">
               <h3>Why should I care?</h3>
               <p>We believe that developers should be concentrating on creating exciting applications, not managing complicated systems or infrastructure.</p>
-              <p>Aside from being <b>powerful</b>, <b>flexible</b> and a <b>very simple</b> way to implement real-time functionality into your application, Insto is also extremely scalable.</p>
+              <p>Aside from being <em>powerful</em>, <em>flexible</em> and a <em>very simple</em> way to implement real-time functionality into your application, Insto is also extremely scalable.</p>
               <p>And because we handle all the heavy lifting and logistics, you don't have to worry about anything and can be up and running in minutes.</p>
             </div>
 
             <div class="span8">
               <h3>Show me.</h3>
-              <p>Simply include our Javascript library, define your user and connect! You are now ready to use Insto, check out some of our demos below.</p>
+              <p>Simply include our <strong>Javascript API</strong>, and check out the <a href='/docs'>docs</a>! You are now ready to use Insto, check out some of our demos below.</p>
               <table class='table table-bordered table-striped'>
               	<tr>
               		<td><a href='/chat'>Chat</a></td>
