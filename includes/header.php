@@ -5,9 +5,9 @@ require_once('includes/config.php');
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Real-time, Real-easy with Insto Javascript API | <?=((isset($title) && $title)?$title:"")?></title>
+    <title>Realtime, Real-easy with Insto Javascript API | <?=((isset($title) && $title)?$title:"")?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Insto brings the real-time web to your application. Our APIs let you add scalable real-time functionality to your project within minutes, hassle free.">
+    <meta name="description" content="Insto brings the realtime web to your application. Our APIs let you add scalable realtime functionality to your project within minutes, hassle free.">
 
     <!-- Le styles -->
     <link href="/css/bootstrap.css" rel="stylesheet">
@@ -16,7 +16,7 @@ require_once('includes/config.php');
     <link href="/css/prettify.css" rel="stylesheet">
     <link href="/css/jqueryui.css" rel="stylesheet">
     
-    <link rel="canonical" href="http://www.insto.co.uk/real-time" />
+    <link rel="canonical" href="http://www.insto.co.uk/realtime" />
     
    	<script src="/js/jquery.js"></script>
     <script src="/js/jqueryui.js"></script>
@@ -82,7 +82,7 @@ require_once('includes/config.php');
             </a>
 
 
-            <a class='brand' href="/"><img src="/img/real-time.png" alt="Real-time applications with Insto" /></a>                            
+            <a class='brand' href="/"><img src="/img/realtime.png" alt="Realtime applications with Insto" /></a>                            
     
             <div class="nav-collapse">
                 <ul class="nav pull-right">

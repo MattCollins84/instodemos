@@ -9,7 +9,7 @@
         <div class="row">
           <div class="span12 companycallout">
           <img class='calloutlogo' src="/img/full_logo.png" alt="insto" />
-          <h1>REAL-TIME. <span>REAL EASY.</span></h1>
+          <h1>REALTIME. <span>REAL EASY.</span></h1>
           <p><a class="btn btn-success btn-large" href="/signup">Sign-up free &raquo;</a></p>
           </div>
         </div>
@@ -21,25 +21,25 @@
       <div class="container"> 
 
         <div class="explain">
-          <p class="intro">Create amazing real-time applications. Simply.</p>
+          <p class="intro">Create amazing realtime applications. Simply.</p>
           <div class="row-fluid"> 
             <div class="span4">
               <h3>What is it?</h3>
-              <p>Insto is an API designed to bring the <em>real-time web</em> to your application, in the simplest way possible.</p>
-              <p>Our Javascript and REST APIs let you add <strong>scalable real-time functionality within minutes</strong>, without any of the hassle.</p>
+              <p>Insto is an API designed to bring the <em>realtime web</em> to your application, in the simplest way possible.</p>
+              <p>Our Javascript and REST APIs let you add <strong>scalable realtime functionality within minutes</strong>, without any of the hassle.</p>
             </div>
 
             <div class="span4">
               <h3>How does it work?</h3>
-              <p>Insto utilises a combination of <a href='http://www.websocket.org/' target='_blank'>HTML5 Websockets</a> and <a href='http://nodejs.org' target='_blank'>Node.JS</a> to make the real-time communication possible, with our <strong>Javascript API</strong> providing compatibility all the way back to Internet Explorer 6.</p>
+              <p>Insto utilises a combination of <a href='http://www.websocket.org/' target='_blank'>HTML5 Websockets</a> and <a href='http://nodejs.org' target='_blank'>Node.JS</a> to make the realtime communication possible, with our <strong>Javascript API</strong> providing compatibility all the way back to Internet Explorer 6.</p>
               <p>However, as Insto is a hosted service you don't need to worry about any of this and instead can focus on creating amazing applications.</p>
               
             </div>
 
             <div class="span4">
               <h3>What can I do?</h3>
-              <p>The short answer is, anything you want! The purpose of Insto is to give you the power to add real-time functionality to your applications in whatever way you see fit.</p>
-              <p>Whether this means updating graphs and charts in real-time, connecting users in an online game, creating presentation software, pushing high quality leads to your sales team or simply creating a chat service... Insto can do it.</p>
+              <p>The short answer is, anything you want! The purpose of Insto is to give you the power to add realtime functionality to your applications in whatever way you see fit.</p>
+              <p>Whether this means updating graphs and charts in realtime, connecting users in an online game, creating presentation software, pushing high quality leads to your sales team or simply creating a chat service... Insto can do it.</p>
             </div>
 
           </div>
@@ -48,7 +48,7 @@
             <div class="span4">
               <h3>Why should I care?</h3>
               <p>We believe that developers should be concentrating on creating exciting applications, not managing complicated systems or infrastructure.</p>
-              <p>Aside from being <em>powerful</em>, <em>flexible</em> and a <em>very simple</em> way to implement real-time functionality into your application, Insto is also extremely scalable.</p>
+              <p>Aside from being <em>powerful</em>, <em>flexible</em> and a <em>very simple</em> way to implement realtime functionality into your application, Insto is also extremely scalable.</p>
               <p>And because we handle all the heavy lifting and logistics, you don't have to worry about anything and can be up and running in minutes.</p>
             </div>
 
@@ -58,11 +58,11 @@
               <table class='table table-bordered table-striped'>
               	<tr>
               		<td><a href='/chat'>Chat</a></td>
-              		<td>The quintessential real-time system. Get your first taste of Insto here.</td>
+              		<td>The quintessential realtime system. Get your first taste of Insto here.</td>
               	</tr>
               	<tr>
               		<td><a href='/analytics'>Analytics</a></td>
-              		<td>Use Insto to monitor the users on your site, here we track what browser each user is using in real-time.</td>
+              		<td>Use Insto to monitor the users on your site, here we track what browser each user is using in realtime.</td>
               	</tr>
               	<tr>
               		<td><a href='/ui'>UI Sync</a></td>

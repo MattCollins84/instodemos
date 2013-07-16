@@ -118,7 +118,7 @@ var userData = {
               
               <div>
                 <h1>Websocket API</h1>
-                <p>The Websocket API is used to send and receive notifications between connected clients in real-time.</p>
+                <p>The Websocket API is used to send and receive notifications between connected clients in realtime.</p>
                 
                 <h3 id='_ws_notifications'>Notifications</h3>
                 <p>Notifications can be sent and received by any connected InstoClient, and when they are received they are passed to the appropriate callback function for the developer to handle as required.</p>

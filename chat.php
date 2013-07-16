@@ -192,7 +192,7 @@ echo htmlentities("<form>
           
           <div class='span6'>
             <h2>6. Congratulations</h2>
-            <p>That is it! At this point you should have a working chat system, using real-time push notifications via Insto.</p>
+            <p>That is it! At this point you should have a working chat system, using realtime push notifications via Insto.</p>
             <p>Hopefully that didn't take too long and you can now spend the rest of your time adding styles and more features to your chat app to make it a polished product.</p>
             <p>If you haven't already, sign-up now by clicking the link below.</p>
             <p><a href='/signup' class='btn btn-mini btn-success'>Sign-up</a></p>

@@ -212,7 +212,7 @@
           
           <div class='span6'>
             <h2>6. Syncing views (pt. 1)</h2>
-            <p>At this point you should have a simple application that allows you to change the colours on multiple browsers in real-time.</p>
+            <p>At this point you should have a simple application that allows you to change the colours on multiple browsers in realtime.</p>
             <p>But for a truly synchronised experience, we should really make sure that whenever a new user connects, they are immediately caught up with the current view.</p>
             <p>When a new client connects, Insto automatically sends them all of the connected clients in their userQuery. In this example we asked to be notified of all users with a userType of 'ui'.</p>
             <p>We can then ask one of these fellow users to send us the current state of play by using the <b>onConnectedUsers</b> callback:</p>
