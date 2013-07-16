@@ -38,7 +38,7 @@
 
             <div class="span4">
               <h3>What can I do?</h3>
-              <p>The short answer is, anything you want! The purpose of Insto is to give you the power to <em>add real-time functionality to your applications</em> in whatever way you see fit.</p>
+              <p>The short answer is, anything you want! The purpose of Insto is to give you the power to add real-time functionality to your applications in whatever way you see fit.</p>
               <p>Whether this means updating graphs and charts in real-time, connecting users in an online game, creating presentation software, pushing high quality leads to your sales team or simply creating a chat service... Insto can do it.</p>
             </div>
 

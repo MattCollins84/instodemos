@@ -16,7 +16,7 @@ require_once('includes/config.php');
     <link href="/css/prettify.css" rel="stylesheet">
     <link href="/css/jqueryui.css" rel="stylesheet">
     
-    <link rel="canonical" href="http://www.insto.co.uk" />
+    <link rel="canonical" href="http://www.insto.co.uk/real-time" />
     
    	<script src="/js/jquery.js"></script>
     <script src="/js/jqueryui.js"></script>
@@ -82,7 +82,7 @@ require_once('includes/config.php');
             </a>
 
 
-            <a class='brand' href="/"><img src="/img/real-time-insto.png" alt="Real-time applications with Insto" /></a>                            
+            <a class='brand' href="/"><img src="/img/real-time.png" alt="Real-time applications with Insto" /></a>                            
     
             <div class="nav-collapse">
                 <ul class="nav pull-right">
