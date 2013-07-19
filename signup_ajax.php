@@ -1,4 +1,5 @@
 <?
+session_start();
 require_once('includes/functions.php');
 
 $name = $_POST['name'];
@@ -34,6 +35,9 @@ $info = curl_getinfo($ch);
 
 // close cURL resource, and free up system resources
 curl_close($ch);
+
+$r = json_decode($response, true);
+$_SESSION['apikey'] = $r['data']['apikey'];
 
 echo json_encode($response);
 

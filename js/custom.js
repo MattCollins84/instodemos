@@ -185,3 +185,51 @@ var calculateConnectedUsers = function(id, direction) {
 	return Object.keys(_users).length;
 	
 }
+
+// edit a row of API keys
+var editRow = function(id) {
+  
+  $('#row-'+id+' input, #row-'+id+' a, #row-'+id+' span').toggleClass('hidden');
+  
+}
+
+// save a row of API keys
+var saveRow = function(id) {
+  
+  var hostname = $('#row-'+id+' #hostname').val();
+  var dev = $('#row-'+id+' #development_hostname').val();
+  var email = $('#row-'+id+' #email').val();
+  var password = $('#row-'+id+' #password').val();
+  var confirm = $('#row-'+id+' #confirm').val();
+  
+  if (password && password != confirm) {
+    alert('Entered passwords do not match');
+    return;
+  }
+
+  var data = {
+    "id": id,
+    hostname: hostname,
+    development_hostname: dev,
+    email: email
+  }
+  
+  if (password && password == confirm) {
+    data.password = password;
+  }
+  
+  $.ajax({
+    url: "/update_api_ajax.php",
+    type: 'POST',
+    data: data,
+    dataType: 'json'
+  }).done(function(data) { 
+    
+    
+    //$('#row-'+id+' input, #row-'+id+' a, #row-'+id+' span').toggleClass('hidden');
+    
+    window.location.href = '/dashboard';
+    
+  });
+  
+}

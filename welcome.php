@@ -15,7 +15,7 @@
             
             <div class="span4">
               <h3>How to start</h3>
-              <p>Now that you have successfully registered, you can begin your Insto adventure! Simply <a href='/signin'>sign in</a> to find your API key, and get creating!</p>
+              <p>Now that you have successfully registered, you can begin your Insto adventure! Access your dashboard by <a href='/signin'>signing in</a> and get creating!</p>
             </div>
             
             <div class='span4'>
@@ -30,6 +30,16 @@
               <h3>Feedback</h3>
               <p>The purpose of running an open beta is to get feedback from the users of Insto to improve and tweak the system, so we may contact you from time to time.</p>
               
+            </div>
+
+
+          </div>
+          
+          <div class="row-fluid"> 
+            
+            <div class="span12">
+              <h2>Your API key is:</h2>
+              <h2><?=$_SESSION['apikey'];?></h2>
             </div>
 
 

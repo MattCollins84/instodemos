@@ -6,6 +6,10 @@
 	margin-top: 5px!important;
 }
 
+.mt20 {
+	margin-top: 20px!important;
+}
+
 .ml {
   margin-left: 5px!important;
 }
@@ -23,7 +27,7 @@
 }
 
 .hidden {
-  display: none;
+  display: none !important;
 }
 
 /*EFFECTS*/

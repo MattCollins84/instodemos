@@ -25,6 +25,7 @@
 		
 		if (in_array($thedomain, $s['domain'])) {
 			$config = $s;
+			$_SESSION['config'] = $config;
 			break;
 		}
 		
