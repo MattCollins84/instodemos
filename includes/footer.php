@@ -4,7 +4,7 @@
         <div class='span4'>
           <ul class='unstyled'>
             <li><a href='/contact'>Contact</a></li>
-            <li><span id="mashape-button" data-api="insto" data-name="mattcollins84"></span><script src="https://www.mashape.com/embed/button.js"></script></li>
+            <li><span id="mashape-button" data-api="insto" data-name="insto"></span><script src="https://www.mashape.com/embed/button.js"></script></li>
           </ul>
         </div>
         
