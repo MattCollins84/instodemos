@@ -86,7 +86,7 @@ require_once('includes/config.php');
     
             <div class="nav-collapse">
                 <ul class="nav pull-right">
-                  <li <?=($homeActive?'class="active"':'');?>><a href="/" class="anchorLink">Home</a></li>
+                  <li <?=($homeActive?'class="active"':'');?>><a href="/realtime" class="anchorLink">Home</a></li>
                   <li <?=($docsActive?'class="active"':'');?>><a href="/docs" class="anchorLink">Docs</a></li>
                   <li <?=($demosActive?'class="active"':'');?>><a href="/demos" class="anchorLink">Demos</a></li>
                   <li <?=($contactActive?'class="active"':'');?>><a href="/contact" class="anchorLink">Contact</a></li>
