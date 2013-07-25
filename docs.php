@@ -46,14 +46,24 @@
               
               <div id='_setup'>
                 <h3>Initial Setup</h3>
-                <p>Configuring your application to use Insto is really simple. Just add the Insto Javascript API shown below into the &lt;head&gt; section of your HTML.</p>
+                <p>We currently have two Insto Javascript libraries available, one for in-browser web apps and one for Node.js developers looking to add realtime features to their Node.js apps. Getting started with both libraries is extremely simple!</p>
+                
+                <div class='env alert alert-info'>
+                  <img alt='HTML5 logo' src='/img/html5.png' class='pull-right' />
+                  <h4>Javascript library - for your web apps</h4>
+                  <p>Configuring your application to use Insto is really simple. Just add the Insto Javascript API shown below into the &lt;head&gt; section of your HTML.</p>
                 
 <pre class='prettyprint'>
 &lt;script type="text/javascript" src="https://api.insto.co.uk:3000/lib/client.js"&gt;&lt;/script&gt;
 </pre>
 
-                <p>The first line sets up the <a href='http://socket.io'>Socket.IO</a> library, which is used to help make our Websocket implementation backwards compatible, whilst the second line loads the Insto client library, which creates a wrapper around our Websocket API.</p>
+                  <p>This is the only file you need to include into your HTML in order to get going with Insto on the web.</p>
+                </div>
                 
+                <div class='env alert alert-success'>
+                  <img alt='Node.js logo' src='/img/nodejs.png' class='pull-right' />
+                  <h4>Node.js library - for your Node apps</h4>
+                  <p>Check out our Node.js repository over on <a href='https://github.com/insto/insto-nodejs' target='_blank'>Github</a>, all the instructions you need are there. The documentation below is transferable to the Node.js module.</p>
               </div>
               
               <div id='_connecting'>
