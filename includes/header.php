@@ -82,7 +82,7 @@ require_once('includes/config.php');
             </a>
 
 
-            <a class='brand' href="/"><img src="/img/realtime.png" alt="Realtime applications with Insto" /></a>                            
+            <a class='brand' href="/realtime"><img src="/img/realtime.png" alt="Realtime applications with Insto" /></a>                            
     
             <div class="nav-collapse">
                 <ul class="nav pull-right">
