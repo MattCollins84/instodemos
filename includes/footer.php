@@ -10,7 +10,7 @@
         
         <div class='span4'>
           <ul class='unstyled'>
-            <li><a href='https://twitter.com/insto_' target='_blank'><img src='/img/twitter_logo.png' alt='Twitter' /></a></li>
+            <li><a href='https://twitter.com/insto_' target='_blank'><img id='twitter' src='/img/twitter_logo.png' alt='Twitter' /></a> <a href='http://www.insto.co.uk' class='g-plusone'></a></li>
           </ul>
         </div>
         

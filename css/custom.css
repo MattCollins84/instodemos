@@ -345,6 +345,10 @@ div.colourpick.blue {
   margin-bottom: 10px;
 }
 
+#twitter {
+  margin-top: -15px;
+}
+
 /* tidy up different sizes */
 @media (max-width: 979px) {
 	

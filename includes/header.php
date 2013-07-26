@@ -22,6 +22,8 @@ require_once('includes/config.php');
     <script src="/js/jqueryui.js"></script>
     <script src="/js/prettify.js"></script>
     <script src="/js/custom.js"></script>
+    <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
+    
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
 
 		<!--<script type="text/javascript">var switchTo5x=true;</script>
