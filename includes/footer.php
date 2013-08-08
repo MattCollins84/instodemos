@@ -23,8 +23,7 @@
     </div>
   </footer>
     
-    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
-    <script src="/js/bootstrap.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
 
 		<!--<script type="text/javascript">stLight.options({publisher: "ca3afe8e-fef8-4dfd-8c34-5b62dd456eb4", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
 		<script>

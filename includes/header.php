@@ -18,8 +18,8 @@ require_once('includes/config.php');
     
     <link rel="canonical" href="http://www.insto.co.uk/realtime" />
     
-   	<script src="/js/jquery.js"></script>
-    <script src="/js/jqueryui.js"></script>
+   	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
     <script src="/js/prettify.js"></script>
     <script src="/js/custom.js"></script>
     <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
