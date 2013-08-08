@@ -14,12 +14,14 @@ require_once('includes/config.php');
     <link href="/css/bootstrap-responsive.css" rel="stylesheet">
     <link href="/css/custom.css" rel="stylesheet">
     <link href="/css/prettify.css" rel="stylesheet">
-    <link href="/css/jqueryui.css" rel="stylesheet">
     
     <link rel="canonical" href="http://www.insto.co.uk/realtime" />
     
    	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <? if ($useUI): ?>
     <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+    <link href="/css/jqueryui.css" rel="stylesheet">
+    <? endif; ?>
     <script src="/js/prettify.js"></script>
     <script src="/js/custom.js"></script>
     <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
@@ -41,7 +43,9 @@ require_once('includes/config.php');
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="/ico/apple-touch-icon-57-precomposed.png">
     
+    <? if ($useInsto): ?>
     <script type="text/javascript" src="<?=($config['insto_host']?$config['insto_host']:"https://api.insto.co.uk:3000");?>/lib/client.js"></script>
+    <? endif; ?>
     
     <!--Load the AJAX API-->
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>

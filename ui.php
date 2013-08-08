@@ -1,5 +1,5 @@
 <?
-  $demosActive = true;
+  $demosActive = $useInsto = $useUI = true;
   $title = "UI Demo";
   require_once('includes/header.php');
 ?>

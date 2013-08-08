@@ -1,5 +1,5 @@
 <?
-  $demosActive = true;
+  $demosActive = $useInsto = true;
   $title = "Chat Demo";
   require_once('includes/header.php');
 ?>

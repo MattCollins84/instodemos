@@ -1,5 +1,5 @@
 <?
-  $demosActive = true;
+  $demosActive = $useInsto = true;
   $title = "Analytics Demo";
   require_once('includes/header.php');
 ?>
